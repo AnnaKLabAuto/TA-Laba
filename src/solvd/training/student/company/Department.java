@@ -1,7 +1,7 @@
 package solvd.training.student.company;
 
 public class Department {
-    private String name;
+    private final String name;
     private String description;
 
     public Department(String name, String description) {
@@ -11,10 +11,6 @@ public class Department {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getDescription() {

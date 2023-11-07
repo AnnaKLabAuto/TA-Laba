@@ -1,6 +1,6 @@
 package solvd.training.student.client;
 
-public class Client implements Contract {
+public final class Client implements Contract {
     private String firstName;
     private String lastName;
     private String email;

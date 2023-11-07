@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Project {
+public abstract class Project {
     private static int nextProjectId = 1;
     private int idOfProject;
     private String name;

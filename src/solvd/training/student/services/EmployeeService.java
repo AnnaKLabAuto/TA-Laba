@@ -5,7 +5,7 @@ import solvd.training.student.employees.EmployeeRepository;
 import solvd.training.student.employees.OfficeEmployee;
 import solvd.training.student.exceptions.EmployeeNotFoundException;
 
-public final class EmployeeService {
+public class EmployeeService {
 
     private EmployeeRepository employeeRepository;
 
@@ -28,7 +28,7 @@ public final class EmployeeService {
     public void displayEmployeeInfo(OfficeEmployee employee) throws EmployeeNotFoundException {
 
         int employeeId = employee.getIdOfEmployee();
-        OfficeEmployee foundEmployee = employeeRepository.findEmployeeById(employeeId);
+        OfficeEmployee foundEmployee = EmployeeRepository.findEmployeeById(employeeId);
 
         if (foundEmployee == null) {
             throw new EmployeeNotFoundException("Employee with ID " + employeeId + " not found.");

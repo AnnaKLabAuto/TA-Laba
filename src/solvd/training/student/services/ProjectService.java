@@ -9,9 +9,9 @@ import solvd.training.student.exceptions.TaskAssignmentException;
 import solvd.training.student.product.Project;
 import solvd.training.student.product.Task;
 
-public final class ProjectService {
+public class ProjectService {
 
-    private final Project project;
+    private Project project;
 
     public ProjectService(Project project) {
         this.project = project;

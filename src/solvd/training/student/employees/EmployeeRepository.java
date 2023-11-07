@@ -5,7 +5,7 @@ import java.util.List;
 
 public class EmployeeRepository {
 
-    private List<OfficeEmployee> employees;
+    private static List<OfficeEmployee> employees;
 
     public EmployeeRepository() {
         employees = new ArrayList<>();
@@ -19,11 +19,14 @@ public class EmployeeRepository {
         return employees.remove(employee);
     }
 
-    public OfficeEmployee findEmployeeById(int employeeId) {
-        return employees.stream()
-                .filter(employee -> employee.getIdOfEmployee() == employeeId)
-                .findFirst()
-                .orElse(null);
+    public static OfficeEmployee findEmployeeById(int employeeId) {
+        for (OfficeEmployee employee : employees) {
+            if (employee.getIdOfEmployee() == employeeId) {
+                return employee;
+            }
+        }
+        return null;
     }
+
 
 }
