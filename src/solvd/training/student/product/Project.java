@@ -14,11 +14,11 @@ public class Project {
     private List<Task> tasks;
     private List<OfficeEmployee> employeeList;
 
-    public Project(String name, String description, List<Task> tasks) {
+    public Project(String name, String description) {
         this.idOfProject = nextProjectId++;
         this.name = name;
         this.description = description;
-        this.tasks = tasks;
+        this.tasks = new ArrayList<>();
         this.employeeList = new ArrayList<>();
     }
 
@@ -73,7 +73,8 @@ public class Project {
     @Override
     public String toString() {
         return "Project{" +
-                "name='" + name + '\'' +
+                "idOfProject=" + idOfProject +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", tasks=" + tasks +
                 ", employeeList=" + employeeList +

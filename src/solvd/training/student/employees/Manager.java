@@ -53,11 +53,6 @@ public class Manager extends Employee implements WorkFlow, TeamMember, ProjectMa
     public void metingAboutProject() {}
 
     @Override
-    public void addTaskToEmployee(OfficeEmployee employee) {
-        System.out.println("Add task to " + employee.getFirstName() + " " + employee.getLastName());
-    }
-
-    @Override
     public void workOnTask() {}
 
 }

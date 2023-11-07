@@ -1,9 +1,6 @@
 package solvd.training.student.client;
 
-import solvd.training.student.employees.Employee;
-import solvd.training.student.employees.TeamMember;
-
-public class Client implements TeamMember, Contract {
+public class Client implements Contract {
     private String firstName;
     private String lastName;
     private String email;
@@ -12,11 +9,6 @@ public class Client implements TeamMember, Contract {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-    }
-
-    @Override
-    public void communicateWith(Employee employee) {
-        System.out.println("Communicating with " + employee.getFirstName() + " " + employee.getLastName());
     }
 
     @Override

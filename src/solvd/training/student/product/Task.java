@@ -13,17 +13,6 @@ public class Task {
         this.name = name;
         this.description = description;
     }
-    public OfficeEmployee getAssignedEmployee() {
-        return assignedEmployee;
-    }
-
-    public void assignToEmployee(OfficeEmployee employee) {
-        this.assignedEmployee = employee;
-    }
-
-    public void unassignFromEmployee() {
-        this.assignedEmployee = null;
-    }
 
     public String getName() {
         return name;
@@ -39,6 +28,18 @@ public class Task {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public OfficeEmployee getAssignedEmployee() {
+        return assignedEmployee;
+    }
+
+    public void assignToEmployee(OfficeEmployee employee) {
+        this.assignedEmployee = employee;
+    }
+
+    public void unassignFromEmployee() {
+        this.assignedEmployee = null;
     }
 
     @Override
