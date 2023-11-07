@@ -38,7 +38,7 @@ public class Main {
 
         employeeService.addEmployee(employee1);
 
-        //TODO:EmployeeNotFoundException
+        //EmployeeNotFoundException
         //employeeService.displayEmployeeInfo(employee2);
 
         Manager manager = new Manager("Tomas", "Andrea", department, "Team Leader", employeeList);
@@ -52,14 +52,14 @@ public class Main {
         projectService.addTaskToProject(task1);
         projectService.addEmployeeToProject(employee1);
 
-        //TODO: DuplicateEmployeeException - checked
+        //DuplicateEmployeeException - checked
         //projectService.addEmployeeToProject(employee1);
 
-        //TODO: ProjectNotFoundException
+        //ProjectNotFoundException
         //projectService.displayProjectInfo(projectWeatherApp);
 
-        //TODO:DuplicateTaskException
-        //TODO:TaskAssignmentException
+        //DuplicateTaskException
+        //TaskAssignmentException
         projectService.addTaskToEmployee(employee2, task1);
         projectService.addTaskToEmployee(employee1, task1);
 
