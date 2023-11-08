@@ -15,8 +15,8 @@ public class EmployeeRepository {
         employees.add(employee);
     }
 
-    public boolean removeEmployee(OfficeEmployee employee) {
-        return employees.remove(employee);
+    public void removeEmployee(OfficeEmployee employee) {
+        employees.remove(employee);
     }
 
     public static OfficeEmployee findEmployeeById(int employeeId) {

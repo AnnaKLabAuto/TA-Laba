@@ -1,6 +1,5 @@
 package solvd.training.student.services;
 
-
 import solvd.training.student.employees.OfficeEmployee;
 import solvd.training.student.exceptions.DuplicateEmployeeException;
 import solvd.training.student.exceptions.DuplicateTaskException;
@@ -28,7 +27,7 @@ public class ProjectService {
 
         for (OfficeEmployee existingEmployee : project.getEmployeeList()) {
             if (existingEmployee.getIdOfEmployee() == employeeId) {
-                throw new DuplicateEmployeeException("Employee with ID " + employeeId + " already exists in the project.");
+                throw new DuplicateEmployeeException("Employee with ID " + employeeId + " already exists in the project");
             }
         }
 
@@ -38,7 +37,7 @@ public class ProjectService {
     public void addTaskToEmployee(OfficeEmployee employee, Task task) {
         try {
             if (!project.getTasks().contains(task)) {
-                throw new TaskAssignmentException("Task cannot be assigned, because it's not part of the project.");
+                throw new TaskAssignmentException("Task cannot be assigned, because it's not part of the project");
             }
             if (task.getAssignedEmployee() == null) {
                 task.assignToEmployee(employee);
@@ -55,7 +54,7 @@ public class ProjectService {
 
     public void displayProjectInfo(Project projectToDisplay) throws ProjectNotFoundException {
         if (projectToDisplay.getIdOfProject() != project.getIdOfProject()) {
-            throw new ProjectNotFoundException("Project not found.");
+            throw new ProjectNotFoundException("Project not found");
         }
         System.out.println("Project Information: \n - " + projectToDisplay.getName() + "\n - " + projectToDisplay.getDescription());
     }

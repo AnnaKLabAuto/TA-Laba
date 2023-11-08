@@ -1,6 +1,5 @@
 package solvd.training.student.services;
 
-
 import solvd.training.student.employees.EmployeeRepository;
 import solvd.training.student.employees.OfficeEmployee;
 import solvd.training.student.exceptions.EmployeeNotFoundException;
@@ -15,13 +14,11 @@ public class EmployeeService {
 
     public void addEmployee(OfficeEmployee employee) {
         System.out.println("Added employee: " + employee.getFirstName() + " " + employee.getLastName());
-        System.out.println();
         employeeRepository.addEmployee(employee);
     }
 
     public void removeEmployee(OfficeEmployee employee) {
         System.out.println("Removed employee: "+ employee.getFirstName() + " " + employee.getLastName());
-        System.out.println();
         employeeRepository.removeEmployee(employee);
     }
 
@@ -39,6 +36,5 @@ public class EmployeeService {
         System.out.println("Last Name: " + foundEmployee.getLastName());
         System.out.println("Title: " + foundEmployee.getTitle());
         System.out.println("Department: " + foundEmployee.getDepartment().getName());
-        System.out.println();
     }
 }

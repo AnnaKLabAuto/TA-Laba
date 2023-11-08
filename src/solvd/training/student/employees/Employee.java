@@ -9,13 +9,17 @@ import java.util.Objects;
 
 public abstract class Employee {
 
-    private static int nextEmployeeId = 1;
+    private static int nextEmployeeId;
     private int idOfEmployee;
     private String firstName;
     private String lastName;
     private Department department;
     private String title;
     private List<Task> listOfTask;
+
+    static {
+        nextEmployeeId = 1;
+    }
 
     public Employee(String firstName, String lastName, Department department, String title) {
         this.idOfEmployee = nextEmployeeId++;
