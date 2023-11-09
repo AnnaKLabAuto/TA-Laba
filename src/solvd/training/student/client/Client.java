@@ -1,17 +1,19 @@
 package solvd.training.student.client;
 
+import java.util.List;
+
 public final class Client implements Contract {
 
     private String firstName;
-
     private String lastName;
-
     private String email;
+    private List<Contract> contracts;
 
-    public Client(String firstName, String lastName, String email) {
+    public Client(String firstName, String lastName, String email, List<Contract> contracts) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.contracts = contracts;
     }
 
     @Override

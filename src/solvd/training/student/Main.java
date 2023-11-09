@@ -2,6 +2,7 @@ package solvd.training.student;
 
 import solvd.training.student.company.Department;
 import solvd.training.student.employees.EmployeeRepository;
+import solvd.training.student.employees.Manager;
 import solvd.training.student.employees.OfficeEmployee;
 import solvd.training.student.exceptions.DuplicateEmployeeException;
 import solvd.training.student.exceptions.EmployeeNotFoundException;
@@ -14,15 +15,17 @@ import solvd.training.student.services.ProjectService;
 public class Main {
     public static void main(String[] args) throws DuplicateEmployeeException, EmployeeNotFoundException, ProjectNotFoundException {
 
-        Department department = new Department("IT", "Information Technology Department");
+        Department itDepartment = new Department("IT", "Information Technology Department");
 
-        OfficeEmployee employee1 = new OfficeEmployee("Franziska" , "Waltraud", department, "Developer");
-        OfficeEmployee employee2 = new OfficeEmployee("Hubertus", "Andrea", department, "Software Engineer");
+        OfficeEmployee employee1 = new OfficeEmployee("Franziska" , "Waltraud", itDepartment, "Developer");
+        OfficeEmployee employee2 = new OfficeEmployee("Hubertus", "Andrea", itDepartment, "Software Engineer");
+
+        Manager manager = new Manager("Thomas", "Smith", itDepartment, "Manager");
 
         Task task1 = new Task("Add button", "Adding button to interface");
         Task task2 = new Task("Add login system", "Adding login system");
 
-        EmployeeRepository employeeRepository = new EmployeeRepository();
+        EmployeeRepository<OfficeEmployee> employeeRepository = new EmployeeRepository<>();
         EmployeeService employeeService = new EmployeeService(employeeRepository);
 
         employeeService.addEmployee(employee1);

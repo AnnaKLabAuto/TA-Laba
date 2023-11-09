@@ -6,13 +6,15 @@ import solvd.training.student.exceptions.DuplicateTaskException;
 import solvd.training.student.exceptions.ProjectNotFoundException;
 import solvd.training.student.exceptions.TaskAssignmentException;
 import solvd.training.student.product.Project;
+import solvd.training.student.product.SoftwareProject;
 import solvd.training.student.product.Task;
+
 
 public class ProjectService {
 
-    private Project project;
+    private SoftwareProject project;
 
-    public ProjectService(Project project) {
+    public ProjectService(SoftwareProject project) {
         this.project = project;
     }
 
@@ -41,7 +43,6 @@ public class ProjectService {
             }
             if (task.getAssignedEmployee() == null) {
                 task.assignToEmployee(employee);
-                employee.addTask(task);
                 System.out.println("Added task: " + task.getName() + " to employee " + employee.getFirstName() + " " + employee.getLastName());
             } else {
                 throw new DuplicateTaskException("Task is already assigned to " + task.getAssignedEmployee().getFirstName() + " " + task.getAssignedEmployee().getLastName());
@@ -50,7 +51,6 @@ public class ProjectService {
             System.out.println(e.getMessage());
         }
     }
-
 
     public void displayProjectInfo(Project projectToDisplay) throws ProjectNotFoundException {
         if (projectToDisplay.getIdOfProject() != project.getIdOfProject()) {

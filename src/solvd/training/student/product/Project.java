@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class Project {
+
     private static int nextProjectId = 1;
     private int idOfProject;
     private String name;
@@ -26,40 +27,20 @@ public abstract class Project {
         return idOfProject;
     }
 
-    public void setIdOfProject(int idOfProject) {
-        this.idOfProject = idOfProject;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public List<Task> getTasks() {
         return tasks;
     }
 
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
-    }
-
     public List<OfficeEmployee> getEmployeeList() {
         return employeeList;
-    }
-
-    public void setEmployeeList(List<OfficeEmployee> employeeList) {
-        this.employeeList = employeeList;
     }
 
     public void addTask(Task task) {

@@ -1,17 +1,19 @@
 package solvd.training.student.employees;
 
-
-
 import solvd.training.student.company.Department;
 import solvd.training.student.product.ProjectManagement;
 import solvd.training.student.product.ProjectWork;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Manager extends Employee implements WorkFlow, TeamMember, ProjectManagement, ProjectWork {
 
-    public Manager(String firstName, String lastName, Department department, String title, List<OfficeEmployee> employeeList) {
+    private Set<OfficeEmployee> projectTeam;
+
+    public Manager(String firstName, String lastName, Department department, String title) {
         super(firstName, lastName, department, title);
+        this.projectTeam = new HashSet<>();
     }
 
     @Override
@@ -47,6 +49,11 @@ public class Manager extends Employee implements WorkFlow, TeamMember, ProjectMa
     @Override
     public void monitorProject() {
         System.out.println("Monitoring the project.");
+    }
+
+    @Override
+    public void addEmployeeToProject(OfficeEmployee employee) {
+
     }
 
     @Override

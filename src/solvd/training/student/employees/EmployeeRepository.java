@@ -1,32 +1,25 @@
 package solvd.training.student.employees;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 
-public class EmployeeRepository {
+public class EmployeeRepository<T extends OfficeEmployee>{
 
-    private static List<OfficeEmployee> employees;
+    private LinkedList<T> employees = new LinkedList<>();
 
-    public EmployeeRepository() {
-        employees = new ArrayList<>();
-    }
-
-    public void addEmployee(OfficeEmployee employee) {
+    public void addEmployee(T employee) {
         employees.add(employee);
     }
 
-    public void removeEmployee(OfficeEmployee employee) {
+    public void removeEmployee(T employee) {
         employees.remove(employee);
     }
 
-    public static OfficeEmployee findEmployeeById(int employeeId) {
-        for (OfficeEmployee employee : employees) {
+    public T findEmployeeById(int employeeId) {
+        for (T employee : employees) {
             if (employee.getIdOfEmployee() == employeeId) {
                 return employee;
             }
         }
         return null;
     }
-
-
 }

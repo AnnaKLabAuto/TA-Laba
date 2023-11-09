@@ -1,10 +1,7 @@
 package solvd.training.student.employees;
 
 import solvd.training.student.company.Department;
-import solvd.training.student.product.Task;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public abstract class Employee {
@@ -15,7 +12,6 @@ public abstract class Employee {
     private String lastName;
     private Department department;
     private String title;
-    private List<Task> listOfTask;
 
     static {
         nextEmployeeId = 1;
@@ -27,7 +23,6 @@ public abstract class Employee {
         this.lastName = lastName;
         this.department = department;
         this.title = title;
-        this.listOfTask = new ArrayList<>();
     }
 
     public String getFirstName() {
@@ -54,14 +49,12 @@ public abstract class Employee {
         this.idOfEmployee = idOfEmployee;
     }
 
-    public void addTask(Task task) {
-        listOfTask.add(task);
-    }
 
     @Override
     public String toString() {
         return "Employee{" +
-                "firstName='" + firstName + '\'' +
+                "idOfEmployee=" + idOfEmployee +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", department=" + department +
                 ", title='" + title + '\'' +
@@ -73,11 +66,11 @@ public abstract class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(department, employee.department) && Objects.equals(title, employee.title);
+        return idOfEmployee == employee.idOfEmployee && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(department, employee.department) && Objects.equals(title, employee.title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, department, title);
+        return Objects.hash(idOfEmployee, firstName, lastName, department, title);
     }
 }
