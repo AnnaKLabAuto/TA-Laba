@@ -2,20 +2,20 @@ package solvd.training.student.employees;
 
 import java.util.LinkedList;
 
-public class EmployeeRepository<T extends Employee>{
+public class EmployeeRepository {
 
-    private LinkedList<T> employees = new LinkedList<>();
+    private LinkedList<Employee> employees = new LinkedList<>();
 
-    public void addEmployee(T employee) {
+    public void addEmployee(Employee employee) {
         employees.add(employee);
     }
 
-    public void removeEmployee(T employee) {
+    public void removeEmployee(Employee employee) {
         employees.remove(employee);
     }
 
-    public T findEmployeeById(int employeeId) {
-        for (T employee : employees) {
+    public Employee findEmployeeById(int employeeId) {
+        for (Employee employee : employees) {
             if (employee.getIdOfEmployee() == employeeId) {
                 return employee;
             }
