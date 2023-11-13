@@ -2,53 +2,46 @@ package solvd.training.student;
 
 import solvd.training.student.company.Department;
 import solvd.training.student.employees.Employee;
-import solvd.training.student.employees.EmployeeRepository;
 import solvd.training.student.employees.Manager;
-import solvd.training.student.employees.OfficeEmployee;
-import solvd.training.student.exceptions.DuplicateEmployeeException;
-import solvd.training.student.exceptions.EmployeeNotFoundException;
-import solvd.training.student.exceptions.ProjectNotFoundException;
-import solvd.training.student.product.SoftwareProject;
+import solvd.training.student.product.Project;
 import solvd.training.student.product.Task;
 import solvd.training.student.services.EmployeeService;
 import solvd.training.student.services.ProjectService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
-    public static void main(String[] args) throws DuplicateEmployeeException, EmployeeNotFoundException, ProjectNotFoundException {
+    public static void main(String[] args) {
 
         Department itDepartment = new Department("IT", "Information Technology Department");
 
-        OfficeEmployee employee1 = new OfficeEmployee("Franziska" , "Waltraud", itDepartment, "Developer");
-        OfficeEmployee employee2 = new OfficeEmployee("Hubertus", "Andrea", itDepartment, "Software Engineer");
+        Employee employee1 = new Employee("Franziska" , "Waltraud", itDepartment, "Developer");
+        Employee employee2 = new Employee("Hubertus", "Andrea", itDepartment, "Software Engineer");
 
-        Manager manager = new Manager("Thomas", "Smith", itDepartment, "Manager");
-        manager.addEmployeeToTeam(employee1);
-        manager.addEmployeeToTeam(employee2);
+        List<Employee> employeeList = new ArrayList<>();
+        employeeList.add(employee1);
+        employeeList.add(employee2);
+
+        Manager manager1 = new Manager("Tomas", "Andrea", itDepartment, "Team Leader", employeeList);
 
         Task task1 = new Task("Add button", "Adding button to interface");
-        Task task2 = new Task("Add login system", "Adding login system");
+        Task task2 = new Task("Add button2", "Adding button2 to interface");
 
-        EmployeeRepository<Employee> employeeRepository = new EmployeeRepository<>();
-        EmployeeService employeeService = new EmployeeService(employeeRepository);
+        List<Task> tasks = new ArrayList<>();
+        tasks.add(task1);
+        tasks.add(task2);
 
+        Project project = new Project("TicketApp", "App for buying tickets.", tasks, employeeList);
+
+        EmployeeService employeeService = new EmployeeService();
         employeeService.addEmployee(employee1);
-        employeeService.addEmployee(manager);
-        employeeService.displayEmployeeInfo(employee2); //EmployeeNotFoundException
+        employeeService.displayEmployeeInfo();
 
-        SoftwareProject projectTicketApp = new SoftwareProject ("TicketApp", "App for buying tickets.");
-        SoftwareProject projectWeatherApp = new SoftwareProject ("WeatherApp", "App for displaying weather info.");
-
-        ProjectService projectService = new ProjectService(projectTicketApp);
-
+        ProjectService projectService = new ProjectService(project);
         projectService.addTaskToProject(task1);
         projectService.addEmployeeToProject(employee1);
-
-        projectService.addEmployeeToProject(employee1); //DuplicateEmployeeException
-        projectService.displayProjectInfo(projectWeatherApp); //ProjectNotFoundException
-
-        projectService.addTaskToEmployee(employee2, task1);
-        projectService.addTaskToEmployee(employee1, task1); //DuplicateTaskException
-        projectService.addTaskToEmployee(employee1, task2); //TaskAssignmentException
+        projectService.displayProjectInfo();
 
     }
 }

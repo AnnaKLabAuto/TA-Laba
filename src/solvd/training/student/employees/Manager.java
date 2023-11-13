@@ -1,67 +1,38 @@
 package solvd.training.student.employees;
 
 import solvd.training.student.company.Department;
-import solvd.training.student.product.ProjectManagement;
-import solvd.training.student.product.ProjectWork;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.Objects;
 
-public class Manager extends Employee implements WorkFlow, TeamMember, ProjectManagement, ProjectWork {
 
-    private Set<OfficeEmployee> projectTeam;
+public class Manager extends Employee{
 
-    public Manager(String firstName, String lastName, Department department, String title) {
+    private List<Employee> employeeList;
+
+    public Manager(String firstName, String lastName, Department department, String title, List<Employee> employeeList) {
         super(firstName, lastName, department, title);
-        this.projectTeam = new HashSet<>();
+        this.employeeList = employeeList;
     }
 
     @Override
-    public void startWork() {
-        System.out.println("Working");
+    public String toString() {
+        return "Manager{" +
+                "employeeList=" + employeeList +
+                '}';
     }
 
     @Override
-    public void finishWork() {
-        System.out.println("Finished working");
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Manager manager = (Manager) o;
+        return Objects.equals(employeeList, manager.employeeList);
     }
 
     @Override
-    public void takeBreak() {
-        System.out.println("Need a break.");
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), employeeList);
     }
-
-    @Override
-    public void communicateWith(Employee employee) {
-        System.out.println("Communicating with " + employee.getFirstName() + " " + employee.getLastName());
-    }
-
-    @Override
-    public void planProject() {
-        System.out.println("Planning the project.");
-    }
-
-    @Override
-    public void scheduleProject() {
-        System.out.println("Scheduling the project.");
-    }
-
-    @Override
-    public void monitorProject() {
-        System.out.println("Monitoring the project.");
-    }
-
-    @Override
-    public void addEmployeeToProject(OfficeEmployee employee) {}
-
-    public void addEmployeeToTeam(OfficeEmployee employee) {
-        projectTeam.add(employee);
-    }
-
-    @Override
-    public void metingAboutProject() {}
-
-    @Override
-    public void workOnTask() {}
-
 }

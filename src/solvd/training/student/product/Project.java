@@ -1,30 +1,22 @@
 package solvd.training.student.product;
 
-import solvd.training.student.employees.OfficeEmployee;
+import solvd.training.student.employees.Employee;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public abstract class Project {
+public class Project {
 
-    private static int nextProjectId = 1;
-    private int idOfProject;
     private String name;
     private String description;
     private List<Task> tasks;
-    private List<OfficeEmployee> employeeList;
+    private List<Employee> employeeList;
 
-    public Project(String name, String description) {
-        this.idOfProject = nextProjectId++;
+    public Project(String name, String description, List<Task> tasks, List<Employee> employeeList) {
         this.name = name;
         this.description = description;
-        this.tasks = new ArrayList<>();
-        this.employeeList = new ArrayList<>();
-    }
-
-    public int getIdOfProject() {
-        return idOfProject;
+        this.tasks = tasks;
+        this.employeeList = employeeList;
     }
 
     public String getName() {
@@ -39,26 +31,20 @@ public abstract class Project {
         return tasks;
     }
 
-    public List<OfficeEmployee> getEmployeeList() {
-        return employeeList;
-    }
-
     public void addTask(Task task) {
         tasks.add(task);
     }
 
-    public void addEmployee(OfficeEmployee employee) {
+    public void addEmployee(Employee employee) {
         employeeList.add(employee);
     }
 
     @Override
     public String toString() {
-        return "Project{" +
-                "idOfProject=" + idOfProject +
-                ", name='" + name + '\'' +
+        return "product.Project{" +
+                "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", tasks=" + tasks +
-                ", employeeList=" + employeeList +
                 '}';
     }
 
@@ -67,11 +53,11 @@ public abstract class Project {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Project project = (Project) o;
-        return Objects.equals(name, project.name) && Objects.equals(description, project.description) && Objects.equals(tasks, project.tasks) && Objects.equals(employeeList, project.employeeList);
+        return Objects.equals(name, project.name) && Objects.equals(description, project.description) && Objects.equals(tasks, project.tasks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description, tasks, employeeList);
+        return Objects.hash(name, description, tasks);
     }
 }
