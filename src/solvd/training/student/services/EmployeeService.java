@@ -7,9 +7,9 @@ import solvd.training.student.exceptions.EmployeeNotFoundException;
 
 public class EmployeeService {
 
-    private EmployeeRepository<Employee> employeeRepository;
+    private EmployeeRepository employeeRepository;
 
-    public EmployeeService(EmployeeRepository<Employee> employeeRepository) {
+    public EmployeeService(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 

@@ -22,13 +22,11 @@ public class Main {
         OfficeEmployee employee2 = new OfficeEmployee("Hubertus", "Andrea", itDepartment, "Software Engineer");
 
         Manager manager = new Manager("Thomas", "Smith", itDepartment, "Manager");
-        manager.addEmployeeToTeam(employee1);
-        manager.addEmployeeToTeam(employee2);
 
         Task task1 = new Task("Add button", "Adding button to interface");
         Task task2 = new Task("Add login system", "Adding login system");
 
-        EmployeeRepository<Employee> employeeRepository = new EmployeeRepository<>();
+        EmployeeRepository employeeRepository = new EmployeeRepository();
         EmployeeService employeeService = new EmployeeService(employeeRepository);
 
         employeeService.addEmployee(employee1);
