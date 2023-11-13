@@ -3,7 +3,6 @@ package solvd.training.student.services;
 import solvd.training.student.employees.Employee;
 import solvd.training.student.employees.EmployeeRepository;
 import solvd.training.student.employees.OfficeEmployee;
-import solvd.training.student.exceptions.EmployeeNotFoundException;
 
 public class EmployeeService {
 
@@ -23,14 +22,10 @@ public class EmployeeService {
         employeeRepository.removeEmployee(employee);
     }
 
-    public void displayEmployeeInfo(OfficeEmployee employee) throws EmployeeNotFoundException {
+    public void displayEmployeeInfo(OfficeEmployee employee){
 
         int employeeId = employee.getIdOfEmployee();
         Employee foundEmployee = employeeRepository.findEmployeeById(employeeId);
-
-        if (foundEmployee == null) {
-            throw new EmployeeNotFoundException("Employee with ID " + employeeId + " not found.");
-        }
 
         System.out.println("Employee Information:");
         System.out.println("Name: " + foundEmployee.getFirstName());

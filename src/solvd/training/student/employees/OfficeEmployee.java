@@ -1,6 +1,5 @@
 package solvd.training.student.employees;
 
-
 import solvd.training.student.company.Department;
 
 public class OfficeEmployee extends Employee implements WorkFlow, TeamMember{
