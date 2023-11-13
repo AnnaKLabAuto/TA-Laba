@@ -1,11 +1,5 @@
 package solvd.training.student.company;
 
-import solvd.training.student.client.Client;
-import solvd.training.student.employees.Manager;
-import solvd.training.student.product.Project;
-
-import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 public class Department {

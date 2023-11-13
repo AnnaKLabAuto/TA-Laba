@@ -49,7 +49,6 @@ public abstract class Employee {
         this.idOfEmployee = idOfEmployee;
     }
 
-
     @Override
     public String toString() {
         return "Employee{" +

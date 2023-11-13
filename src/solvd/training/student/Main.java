@@ -23,7 +23,7 @@ public class Main {
         Task task1 = new Task("Add button", "Adding button to interface");
         Task task2 = new Task("Add login system", "Adding login system");
 
-        EmployeeRepository<Employee> employeeRepository = new EmployeeRepository<>();
+        EmployeeRepository employeeRepository = new EmployeeRepository();
         EmployeeService employeeService = new EmployeeService(employeeRepository);
 
         employeeService.addEmployee(employee1);
@@ -36,7 +36,6 @@ public class Main {
         projectService.addTaskToProject(task1);
         projectService.addEmployeeToProject(employee1);
         projectService.addTaskToEmployee(employee2, task1);
-
 
     }
 }

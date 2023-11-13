@@ -1,7 +1,6 @@
 package solvd.training.student.services;
 
 import solvd.training.student.employees.OfficeEmployee;
-import solvd.training.student.product.Project;
 import solvd.training.student.product.SoftwareProject;
 import solvd.training.student.product.Task;
 

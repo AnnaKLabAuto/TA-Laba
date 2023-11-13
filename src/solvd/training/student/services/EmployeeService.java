@@ -6,9 +6,9 @@ import solvd.training.student.employees.OfficeEmployee;
 
 public class EmployeeService {
 
-    private EmployeeRepository<Employee> employeeRepository;
+    private EmployeeRepository employeeRepository;
 
-    public EmployeeService(EmployeeRepository<Employee> employeeRepository) {
+    public EmployeeService(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 
