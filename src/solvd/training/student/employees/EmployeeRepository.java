@@ -2,7 +2,7 @@ package solvd.training.student.employees;
 
 import java.util.LinkedList;
 
-public class EmployeeRepository<T extends OfficeEmployee>{
+public class EmployeeRepository<T extends Employee>{
 
     private LinkedList<T> employees = new LinkedList<>();
 

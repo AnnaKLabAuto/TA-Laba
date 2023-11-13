@@ -24,15 +24,12 @@ public class ProjectService {
     }
 
     public void addEmployeeToProject(OfficeEmployee employee) throws DuplicateEmployeeException {
-
         int employeeId = employee.getIdOfEmployee();
-
         for (OfficeEmployee existingEmployee : project.getEmployeeList()) {
             if (existingEmployee.getIdOfEmployee() == employeeId) {
                 throw new DuplicateEmployeeException("Employee with ID " + employeeId + " already exists in the project");
             }
         }
-
         project.addEmployee(employee);
     }
 

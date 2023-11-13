@@ -1,23 +1,24 @@
 package solvd.training.student.services;
 
+import solvd.training.student.employees.Employee;
 import solvd.training.student.employees.EmployeeRepository;
 import solvd.training.student.employees.OfficeEmployee;
 import solvd.training.student.exceptions.EmployeeNotFoundException;
 
 public class EmployeeService {
 
-    private EmployeeRepository<OfficeEmployee> employeeRepository;
+    private EmployeeRepository<Employee> employeeRepository;
 
-    public EmployeeService(EmployeeRepository<OfficeEmployee> employeeRepository) {
+    public EmployeeService(EmployeeRepository<Employee> employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 
-    public void addEmployee(OfficeEmployee employee) {
+    public void addEmployee(Employee employee) {
         System.out.println("Added employee: " + employee.getFirstName() + " " + employee.getLastName());
         employeeRepository.addEmployee(employee);
     }
 
-    public void removeEmployee(OfficeEmployee employee) {
+    public void removeEmployee(Employee employee) {
         System.out.println("Removed employee: "+ employee.getFirstName() + " " + employee.getLastName());
         employeeRepository.removeEmployee(employee);
     }
@@ -25,7 +26,7 @@ public class EmployeeService {
     public void displayEmployeeInfo(OfficeEmployee employee) throws EmployeeNotFoundException {
 
         int employeeId = employee.getIdOfEmployee();
-        OfficeEmployee foundEmployee = employeeRepository.findEmployeeById(employeeId);
+        Employee foundEmployee = employeeRepository.findEmployeeById(employeeId);
 
         if (foundEmployee == null) {
             throw new EmployeeNotFoundException("Employee with ID " + employeeId + " not found.");

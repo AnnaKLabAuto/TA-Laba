@@ -1,6 +1,7 @@
 package solvd.training.student;
 
 import solvd.training.student.company.Department;
+import solvd.training.student.employees.Employee;
 import solvd.training.student.employees.EmployeeRepository;
 import solvd.training.student.employees.Manager;
 import solvd.training.student.employees.OfficeEmployee;
@@ -21,14 +22,17 @@ public class Main {
         OfficeEmployee employee2 = new OfficeEmployee("Hubertus", "Andrea", itDepartment, "Software Engineer");
 
         Manager manager = new Manager("Thomas", "Smith", itDepartment, "Manager");
+        manager.addEmployeeToTeam(employee1);
+        manager.addEmployeeToTeam(employee2);
 
         Task task1 = new Task("Add button", "Adding button to interface");
         Task task2 = new Task("Add login system", "Adding login system");
 
-        EmployeeRepository<OfficeEmployee> employeeRepository = new EmployeeRepository<>();
+        EmployeeRepository<Employee> employeeRepository = new EmployeeRepository<>();
         EmployeeService employeeService = new EmployeeService(employeeRepository);
 
         employeeService.addEmployee(employee1);
+        employeeService.addEmployee(manager);
         employeeService.displayEmployeeInfo(employee2); //EmployeeNotFoundException
 
         SoftwareProject projectTicketApp = new SoftwareProject ("TicketApp", "App for buying tickets.");

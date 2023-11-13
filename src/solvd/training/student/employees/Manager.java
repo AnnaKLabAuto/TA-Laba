@@ -52,8 +52,10 @@ public class Manager extends Employee implements WorkFlow, TeamMember, ProjectMa
     }
 
     @Override
-    public void addEmployeeToProject(OfficeEmployee employee) {
+    public void addEmployeeToProject(OfficeEmployee employee) {}
 
+    public void addEmployeeToTeam(OfficeEmployee employee) {
+        projectTeam.add(employee);
     }
 
     @Override

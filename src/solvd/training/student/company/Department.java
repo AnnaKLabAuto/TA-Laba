@@ -1,10 +1,12 @@
 package solvd.training.student.company;
 
 import solvd.training.student.client.Client;
+import solvd.training.student.employees.Manager;
 import solvd.training.student.product.Project;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class Department {
 
@@ -12,7 +14,9 @@ public class Department {
 
     private String description;
 
-    Map<Client, List<Project>> clientProjects;
+    private Map<Client, List<Project>> clientProjects;
+
+    private Map<Manager, List<Project>> managerProjects;
 
     public Department(String name, String description) {
         this.name = name;
@@ -29,5 +33,18 @@ public class Department {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Department that = (Department) o;
+        return Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(clientProjects, that.clientProjects) && Objects.equals(managerProjects, that.managerProjects);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, clientProjects, managerProjects);
     }
 }
