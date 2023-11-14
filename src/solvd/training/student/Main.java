@@ -1,7 +1,6 @@
 package solvd.training.student;
 
 import solvd.training.student.company.Department;
-import solvd.training.student.employees.Employee;
 import solvd.training.student.employees.EmployeeRepository;
 import solvd.training.student.employees.Manager;
 import solvd.training.student.employees.OfficeEmployee;
