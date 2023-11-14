@@ -12,7 +12,7 @@ import solvd.training.student.product.Task;
 
 public class ProjectService {
 
-    private SoftwareProject project;
+    private final SoftwareProject project;
 
     public ProjectService(SoftwareProject project) {
         this.project = project;

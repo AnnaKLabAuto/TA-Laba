@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class Manager extends Employee implements WorkFlow, TeamMember, ProjectManagement, ProjectWork {
 
-    private Set<OfficeEmployee> projectTeam;
+    private final Set<OfficeEmployee> projectTeam;
 
     public Manager(String firstName, String lastName, Department department, String title) {
         super(firstName, lastName, department, title);
