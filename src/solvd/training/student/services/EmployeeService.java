@@ -6,7 +6,7 @@ import solvd.training.student.employees.OfficeEmployee;
 
 public class EmployeeService {
 
-    private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
 
     public EmployeeService(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
@@ -18,11 +18,11 @@ public class EmployeeService {
     }
 
     public void removeEmployee(Employee employee) {
-        System.out.println("Removed employee: "+ employee.getFirstName() + " " + employee.getLastName());
+        System.out.println("Removed employee: " + employee.getFirstName() + " " + employee.getLastName());
         employeeRepository.removeEmployee(employee);
     }
 
-    public void displayEmployeeInfo(OfficeEmployee employee){
+    public void displayEmployeeInfo(OfficeEmployee employee) {
 
         int employeeId = employee.getIdOfEmployee();
         Employee foundEmployee = employeeRepository.findEmployeeById(employeeId);

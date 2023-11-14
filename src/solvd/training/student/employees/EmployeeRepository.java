@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class EmployeeRepository {
 
-    private LinkedList<Employee> employees = new LinkedList<>();
+    private final LinkedList<Employee> employees = new LinkedList<>();
 
     public void addEmployee(Employee employee) {
         employees.add(employee);
