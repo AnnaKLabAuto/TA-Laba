@@ -33,7 +33,7 @@ public class Main {
 
         employeeService.addEmployee(employee1);
         employeeService.addEmployee(manager);
-        employeeService.displayEmployeeInfo(employee2); //EmployeeNotFoundException
+        employeeService.displayEmployeeInfo(employee1);
 
         SoftwareProject projectTicketApp = new SoftwareProject ("TicketApp", "App for buying tickets.");
         SoftwareProject projectWeatherApp = new SoftwareProject ("WeatherApp", "App for displaying weather info.");
@@ -42,13 +42,8 @@ public class Main {
 
         projectService.addTaskToProject(task1);
         projectService.addEmployeeToProject(employee1);
-
-        projectService.addEmployeeToProject(employee1); //DuplicateEmployeeException
-        projectService.displayProjectInfo(projectWeatherApp); //ProjectNotFoundException
-
         projectService.addTaskToEmployee(employee2, task1);
-        projectService.addTaskToEmployee(employee1, task1); //DuplicateTaskException
-        projectService.addTaskToEmployee(employee1, task2); //TaskAssignmentException
+
 
     }
 }

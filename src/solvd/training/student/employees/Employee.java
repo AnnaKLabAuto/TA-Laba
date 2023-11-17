@@ -8,10 +8,10 @@ public abstract class Employee {
 
     private static int nextEmployeeId;
     private int idOfEmployee;
-    private String firstName;
-    private String lastName;
-    private Department department;
-    private String title;
+    private final String firstName;
+    private final String lastName;
+    private final Department department;
+    private final String title;
 
     static {
         nextEmployeeId = 1;
@@ -48,7 +48,6 @@ public abstract class Employee {
     public void setIdOfEmployee(int idOfEmployee) {
         this.idOfEmployee = idOfEmployee;
     }
-
 
     @Override
     public String toString() {

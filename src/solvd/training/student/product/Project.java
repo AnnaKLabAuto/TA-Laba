@@ -9,11 +9,11 @@ import java.util.Objects;
 public abstract class Project {
 
     private static int nextProjectId = 1;
-    private int idOfProject;
-    private String name;
-    private String description;
-    private List<Task> tasks;
-    private List<OfficeEmployee> employeeList;
+    private final int idOfProject;
+    private final String name;
+    private final String description;
+    private final List<Task> tasks;
+    private final List<OfficeEmployee> employeeList;
 
     public Project(String name, String description) {
         this.idOfProject = nextProjectId++;
