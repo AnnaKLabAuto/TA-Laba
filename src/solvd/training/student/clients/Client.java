@@ -1,8 +1,8 @@
-package solvd.training.student.client;
+package solvd.training.student.clients;
 
 public final class Client implements Contract {
 
-    public Client(String firstName, String lastName, String email) { }
+    public Client(String firstName, String lastName, String email) {}
 
     @Override
     public void createContract() {
