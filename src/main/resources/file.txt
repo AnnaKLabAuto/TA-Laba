@@ -1,1 +1,2 @@
-Hello World Hello World!
+Java is a high level, object-oriented programming language
+Java is a high level, object-oriented programming language
