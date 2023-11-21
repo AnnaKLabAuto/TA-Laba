@@ -1,6 +1,7 @@
 package solvd.training.student.employees;
 
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 
 public class EmployeeRepository {
 
@@ -20,6 +21,6 @@ public class EmployeeRepository {
                 return employee;
             }
         }
-        return null;
+        throw new NoSuchElementException("Employee with ID " + employeeId + " not found");
     }
 }

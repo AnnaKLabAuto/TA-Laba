@@ -1,4 +1,4 @@
-package solvd.training.student.client;
+package solvd.training.student.clients;
 
 public interface Contract {
     void createContract();
