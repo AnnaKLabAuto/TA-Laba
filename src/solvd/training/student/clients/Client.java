@@ -1,7 +1,7 @@
 package solvd.training.student.clients;
 
 public final class Client implements Contract {
-    public Client() {}
+    public Client(){}
 
     @Override
     public void createContract() {
