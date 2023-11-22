@@ -1,25 +1,31 @@
 package solvd.training.student.employees;
 
-import java.util.LinkedList;
+import solvd.training.student.customlinkedlist.CustomLinkedList;
+
+import java.util.NoSuchElementException;
 
 public class EmployeeRepository<T extends Employee>{
 
-    private final LinkedList<T> employees = new LinkedList<>();
+    private final CustomLinkedList<T> employees = new CustomLinkedList<>();
 
     public void addEmployee(T employee) {
         employees.add(employee);
     }
 
     public void removeEmployee(T employee) {
-        employees.remove(employee);
+        int index = employees.indexOf(employee);
+        if (index != -1) {
+            employees.remove(index);
+        }
     }
 
     public T findEmployeeById(int employeeId) {
-        for (T employee : employees) {
+        for (int i = 0; i < employees.size(); i++) {
+            T employee = employees.get(i);
             if (employee.getIdOfEmployee() == employeeId) {
                 return employee;
             }
         }
-        return null;
+        throw new NoSuchElementException("Employee with ID " + employeeId + " not found");
     }
 }

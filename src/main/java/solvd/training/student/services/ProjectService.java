@@ -9,7 +9,6 @@ import solvd.training.student.product.Project;
 import solvd.training.student.product.SoftwareProject;
 import solvd.training.student.product.Task;
 
-
 public class ProjectService {
 
     private final SoftwareProject project;
