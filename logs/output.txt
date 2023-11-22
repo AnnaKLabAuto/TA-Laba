@@ -1,0 +1,2 @@
+13:11:27.271 [main] INFO  solvd.training.student.FileLogger - This is an info message
+13:17:29.479 [main] INFO  solvd.training.student.FileLogger - This is an info message

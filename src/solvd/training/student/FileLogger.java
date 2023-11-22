@@ -20,7 +20,6 @@ public class FileLogger {
                 .withLayout(PatternLayout.newBuilder().withPattern("%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n").build())
                 .setName("File")
                 .build();
-
         try {
             appender.start();
             LoggerContext context = (LoggerContext) LogManager.getContext(false);
