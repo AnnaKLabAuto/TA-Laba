@@ -15,6 +15,8 @@ import solvd.training.student.services.ProjectService;
 public class Main {
     public static void main(String[] args) throws DuplicateEmployeeException, EmployeeNotFoundException, ProjectNotFoundException {
 
+        Client client = new Client("Piotr", "Smith", "piotr.smith@email.com");
+
         Department itDepartment = new Department("IT", "Information Technology Department");
 
         OfficeEmployee employee1 = new OfficeEmployee("Franziska" , "Waltraud", itDepartment, "Developer");
