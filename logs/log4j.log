@@ -1,2 +1,8 @@
-[INFO ] 2023-11-07 09:17:25.042 [main] FileLogger - Hello!
-[DEBUG] 2023-11-07 09:17:25.044 [main] FileLogger - Hello!
+[INFO ] 2023-11-22 12:02:10.148 [main] FileLogger - This is a log message
+[DEBUG] 2023-11-22 12:02:10.151 [main] FileLogger - This is debug message
+[INFO ] 2023-11-22 13:11:27.271 [main] FileLogger - This is an info message
+[DEBUG] 2023-11-22 13:11:27.274 [main] FileLogger - This is a debug message
+[INFO ] 2023-11-22 13:17:29.479 [main] FileLogger - This is an info message
+[DEBUG] 2023-11-22 13:17:29.482 [main] FileLogger - This is a debug message
+[INFO ] 2023-11-22 13:17:47.330 [main] FileLogger - This is an info message
+[DEBUG] 2023-11-22 13:17:47.333 [main] FileLogger - This is a debug message
