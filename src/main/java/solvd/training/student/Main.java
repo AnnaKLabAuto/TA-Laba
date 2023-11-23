@@ -6,9 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -18,7 +16,16 @@ public class Main {
             String filePath = Main.class.getClassLoader().getResource("file.txt").getPath();
             try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
                 String text = FileUtils.readFileToString(new File(filePath), StandardCharsets.UTF_8);
-                Set<String> uniqueWords = new HashSet<>(List.of(StringUtils.split(text, " ")));
+                String[] words = text.split("\\W+");
+
+                List<String> filteredWords = new ArrayList<>();
+                for (String word : words) {
+                    if (!StringUtils.isAllBlank(word) && !StringUtils.containsAny(word, ",.")) {
+                        filteredWords.add(word);
+                    }
+                }
+
+                Set<String> uniqueWords = new HashSet<>(Arrays.asList(words));
                 FileUtils.writeStringToFile(new File("output.txt"), String.valueOf(uniqueWords.size()), StandardCharsets.UTF_8);
             }
         } catch (IOException e) {
