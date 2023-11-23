@@ -16,15 +16,14 @@ public class Main {
             String filePath = Main.class.getClassLoader().getResource("file.txt").getPath();
             try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
                 String text = FileUtils.readFileToString(new File(filePath), StandardCharsets.UTF_8);
-                String[] words = text.split("\\W+");
 
+                String[] words = text.split("\\W+");
                 List<String> filteredWords = new ArrayList<>();
                 for (String word : words) {
-                    if (!StringUtils.isAllBlank(word) && !StringUtils.containsAny(word, ",.")) {
+                    if (!StringUtils.isAllBlank(word) && !StringUtils.containsAny(word, "`~!@#$%^&*()_+{}|:\"<>?-=[]\\;\\'.\\/,")) {
                         filteredWords.add(word);
                     }
                 }
-
                 Set<String> uniqueWords = new HashSet<>(Arrays.asList(words));
                 FileUtils.writeStringToFile(new File("output.txt"), String.valueOf(uniqueWords.size()), StandardCharsets.UTF_8);
             }
