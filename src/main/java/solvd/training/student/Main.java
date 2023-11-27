@@ -5,16 +5,23 @@ import solvd.training.student.employees.*;
 import solvd.training.student.enums.*;
 import solvd.training.student.exceptions.DuplicateEmployeeException;
 import solvd.training.student.exceptions.EmployeeNotFoundException;
+import solvd.training.student.lambdas.RaiseFunction;
 import solvd.training.student.product.SoftwareProject;
 import solvd.training.student.product.Task;
 import solvd.training.student.services.EmployeeService;
 import solvd.training.student.services.ProjectService;
 
+import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class Main {
+
+    public static <E extends Employee> Predicate<E> hasTaskEmployee(Task task) {
+        return employee -> task.getAssignedEmployee().equals(employee);
+    }
 
     public static void main(String[] args) throws DuplicateEmployeeException, EmployeeNotFoundException{
 
@@ -27,7 +34,8 @@ public class Main {
                 itDepartment,
                 JobTitle.SOFTWARE_ENGINEER,
                 EmploymentStatus.FULL_TIME,
-                LeaveType.NO_LEAVE);
+                LeaveType.NO_LEAVE,
+                5000);
 
         OfficeEmployee employee2 = new OfficeEmployee(
                 "Hubertus",
@@ -35,7 +43,8 @@ public class Main {
                 itDepartment,
                 JobTitle.SOFTWARE_ENGINEER,
                 EmploymentStatus.PART_TIME,
-                LeaveType.NO_LEAVE);
+                LeaveType.NO_LEAVE,
+                7000);
 
         Manager manager = new Manager(
                 "Thomas",
@@ -43,7 +52,8 @@ public class Main {
                 itDepartment,
                 JobTitle.PRODUCT_MANAGER,
                 EmploymentStatus.FULL_TIME,
-                LeaveType.NO_LEAVE);
+                LeaveType.NO_LEAVE,
+                10000);
 
         Accountant accountant = new Accountant(
                 "Maria",
@@ -51,7 +61,8 @@ public class Main {
                 accountingDepartment,
                 JobTitle.ACCOUNTANT,
                 EmploymentStatus.FULL_TIME,
-                LeaveType.VACATION_LEAVE);
+                LeaveType.VACATION_LEAVE,
+                8000);
 
         Task task1 = new Task(
                 "Add button",
@@ -71,9 +82,21 @@ public class Main {
         SoftwareProject projectWeatherApp = new SoftwareProject (
                 "WeatherApp",
                 "App for displaying weather info.",
-                ProjectStatus.IN_PLANNING);
+                ProjectStatus.COMPLETED);
 
-        //Lambdas
+        EmployeeRepository<Employee> employeeRepository = new EmployeeRepository<>();
+
+        EmployeeService employeeService = new EmployeeService(employeeRepository);
+        employeeService.addEmployee(employee1);
+        employeeService.addEmployee(manager);
+        employeeService.displayEmployeeInfo(employee1);
+
+        ProjectService projectService = new ProjectService(projectTicketApp);
+        projectService.addTaskToProject(task1);
+        projectService.addEmployeeToProject(employee1);
+        projectService.addTaskToEmployee(employee1, task1);
+
+        //----------------------------------------------------------
         Supplier<SoftwareProject> addSoftwareProject = () -> new SoftwareProject("FoodApp", "App for searching food recipes", ProjectStatus.IN_PLANNING);
         SoftwareProject newProject = addSoftwareProject.get();
         System.out.println("New project created:");
@@ -83,19 +106,39 @@ public class Main {
         boolean isInProgress = checkIsProjectInProgress.test(projectWeatherApp);
         System.out.println("Is project in progress: " + isInProgress);
 
+        Consumer<Employee> displayEmployeeSalary = employee ->
+                System.out.println("The Salary of " + employee.getFirstName() + " " + employee.getLastName() + "is " + employee.getSalary());
+        displayEmployeeSalary.accept(employee1);
 
-        EmployeeRepository<Employee> employeeRepository = new EmployeeRepository<>();
-        EmployeeService employeeService = new EmployeeService(employeeRepository);
+        Function<Task,Employee> getAssignedEmployee = Task::getAssignedEmployee;
+        Employee assignedEmployee = getAssignedEmployee.apply(task1);
+        System.out.println("Assigned employee: " + assignedEmployee.getFirstName() + " " + assignedEmployee.getLastName());
 
-        //employeeService.addEmployee(employee1);
-        //employeeService.addEmployee(manager);
-        //employeeService.displayEmployeeInfo(employee1);
+        Consumer<SoftwareProject> getTasksAndPrint = project -> {
+            List<Task> tasks = project.getTasks();
+            for (Task task : tasks) {
+                System.out.println(task);
+            }
+        };
+        getTasksAndPrint.accept(projectTicketApp);
 
-        ProjectService projectService = new ProjectService(projectTicketApp);
+        System.out.println("//----------------------------------------------------------");
+        RaiseFunction<Employee> giveRaise = employee -> {
+            int currentSalary = employee.getSalary();
+            double raisePercentage = 0.30;
+            int raiseAmount = (int) (currentSalary * raisePercentage);
+            int newSalary = currentSalary + raiseAmount;
+            employee.setSalary(newSalary);
+            System.out.println("Employee " + employee.getFirstName() + " " + employee.getLastName() +
+                    " has received a raise. New salary: " + newSalary);
+        };
+        giveRaise.giveRaise(employee1);
 
-        //projectService.addTaskToProject(task1);
-        //projectService.addEmployeeToProject(employee1);
-        //projectService.addTaskToEmployee(employee1, task1);
+        Predicate<OfficeEmployee> taskPredicate = hasTaskEmployee(task1);
+        System.out.println("Does employee1 have the task? " + taskPredicate.test(employee1));
+        System.out.println("Does employee2 have the task? " + taskPredicate.test(employee2));
 
     }
+
+
 }

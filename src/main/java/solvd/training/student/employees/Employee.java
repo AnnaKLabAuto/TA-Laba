@@ -17,12 +17,13 @@ public abstract class Employee {
     private final JobTitle title;
     private final EmploymentStatus status;
     private final LeaveType type;
+    private int salary;
 
     static {
         nextEmployeeId = 1;
     }
 
-    public Employee(String firstName, String lastName, Department department, JobTitle title, EmploymentStatus status, LeaveType type) {
+    public Employee(String firstName, String lastName, Department department, JobTitle title, EmploymentStatus status, LeaveType type, int salary) {
         this.idOfEmployee = nextEmployeeId++;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -30,6 +31,7 @@ public abstract class Employee {
         this.title = title;
         this.status = status;
         this.type = type;
+        this.salary = salary;
     }
 
     public int getIdOfEmployee() {
@@ -50,6 +52,14 @@ public abstract class Employee {
 
     public JobTitle getTitle() {
         return title;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
     }
 
     @Override

@@ -1,10 +1,21 @@
 package solvd.training.student.lambdas;
-import solvd.training.student.employees.Employee;
 
-import java.util.function.Consumer;
+import solvd.training.student.employees.Employee;
+import solvd.training.student.product.Task;
 import java.util.function.Predicate;
 
-public class Lambdas {
+//public class CustomLambdas {
+//
+//        public <E extends Employee> Predicate<E> hasTaskEmployee(Task<E> task) {
+//            return (employee) -> {
+//                if (!task.getAssignedEmployee().equals(employee)) {
+//                    return false;
+//                }
+//                return true;
+//            };
+//        }
+//}
+
 
 //    Consumer<Employee> giveRaise = (employee) -> {
 //        double currentSalary = employee.getSalary();
@@ -20,6 +31,6 @@ public class Lambdas {
     //Supplier<Employee> getEmployeeById(int id) ??
     //Function<Employee, String> generateEmployeeEmail(Employee employee)
     //BiFunction<Employee, Task, Boolean> canAssignTask(Employee employee, Task task) ??
-}
+
 
 //giveRaise.accept(employee);

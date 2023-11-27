@@ -1,17 +1,17 @@
 package solvd.training.student.enums;
 
 public enum JobTitle {
-    SOFTWARE_ENGINEER(80000),
-    PRODUCT_MANAGER(90000),
-    ACCOUNTANT(100000);
+    SOFTWARE_ENGINEER("software Enginner"),
+    PRODUCT_MANAGER("Product Manager"),
+    ACCOUNTANT("Accountant");
 
-    private int baseSalary;
+    private String title;
 
-    JobTitle(int baseSalary) {
-        this.baseSalary = baseSalary;
+    JobTitle(String title) {
+        this.title = title;
     }
 
-    public int getBaseSalary() {
-        return baseSalary;
+    public String getTitle() {
+        return title;
     }
 }
