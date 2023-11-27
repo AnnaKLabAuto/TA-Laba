@@ -58,6 +58,10 @@ public abstract class Project {
         employeeList.add(employee);
     }
 
+    public ProjectStatus getStatus() {
+        return status;
+    }
+
     @Override
     public String toString() {
         return "Project{" +

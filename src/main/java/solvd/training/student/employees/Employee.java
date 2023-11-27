@@ -36,16 +36,20 @@ public abstract class Employee {
         return idOfEmployee;
     }
 
-    public void setIdOfEmployee(int idOfEmployee) {
-        this.idOfEmployee = idOfEmployee;
-    }
-
     public String getFirstName() {
         return firstName;
     }
 
     public String getLastName() {
         return lastName;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public JobTitle getTitle() {
+        return title;
     }
 
     @Override
