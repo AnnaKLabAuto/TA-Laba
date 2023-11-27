@@ -1,10 +1,8 @@
 package solvd.training.student;
 
 import solvd.training.student.company.Department;
-import solvd.training.student.employees.Employee;
-import solvd.training.student.employees.EmployeeRepository;
-import solvd.training.student.employees.Manager;
-import solvd.training.student.employees.OfficeEmployee;
+import solvd.training.student.employees.*;
+import solvd.training.student.enums.*;
 import solvd.training.student.exceptions.DuplicateEmployeeException;
 import solvd.training.student.exceptions.EmployeeNotFoundException;
 import solvd.training.student.exceptions.ProjectNotFoundException;
@@ -13,20 +11,50 @@ import solvd.training.student.product.Task;
 import solvd.training.student.services.EmployeeService;
 import solvd.training.student.services.ProjectService;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Main {
-    public static void main(String[] args) throws DuplicateEmployeeException, EmployeeNotFoundException, ProjectNotFoundException {
+    public static void main(String[] args) throws DuplicateEmployeeException, EmployeeNotFoundException{
 
-        Department itDepartment = new Department("IT", "Information Technology Department");
+        Department itDepartment = new Department("IT", "");
+        Department hrDepartment = new Department("HR", "");
+        Department accountingDepartment = new Department("Finance", "");
 
-        OfficeEmployee employee1 = new OfficeEmployee("Franziska" , "Waltraud", itDepartment, "Developer");
-        OfficeEmployee employee2 = new OfficeEmployee("Hubertus", "Andrea", itDepartment, "Software Engineer");
+        OfficeEmployee employee1 = new OfficeEmployee(
+                "Franziska" ,
+                "Waltraud",
+                itDepartment,
+                JobTitle.SOFTWARE_ENGINEER,
+                EmploymentStatus.FULL_TIME,
+                LeaveType.NO_LEAVE);
 
-        Manager manager = new Manager("Thomas", "Smith", itDepartment, "Manager");
-        manager.addEmployeeToTeam(employee1);
-        manager.addEmployeeToTeam(employee2);
+        OfficeEmployee employee2 = new OfficeEmployee(
+                "Hubertus",
+                "Andrea",
+                itDepartment,
+                JobTitle.SOFTWARE_ENGINEER,
+                EmploymentStatus.PART_TIME,
+                LeaveType.NO_LEAVE);
 
-        Task task1 = new Task("Add button", "Adding button to interface");
-        Task task2 = new Task("Add login system", "Adding login system");
+        Manager manager = new Manager(
+                "Thomas",
+                "Smith",
+                itDepartment,
+                JobTitle.PRODUCT_MANAGER,
+                EmploymentStatus.FULL_TIME,
+                LeaveType.NO_LEAVE);
+
+        Accountant accountant = new Accountant(
+                "Maria",
+                "Doe",
+                itDepartment,
+                JobTitle.ACCOUNTANT,
+                EmploymentStatus.FULL_TIME,
+                LeaveType.VACATION_LEAVE);
+
+        Task task1 = new Task("Add button", "Adding button to interface", TaskPriority.LOW);
+        Task task2 = new Task("Add login system", "Adding login system", TaskPriority.HIGH);
 
         EmployeeRepository<Employee> employeeRepository = new EmployeeRepository<>();
         EmployeeService employeeService = new EmployeeService(employeeRepository);
@@ -35,8 +63,8 @@ public class Main {
         employeeService.addEmployee(manager);
         employeeService.displayEmployeeInfo(employee1);
 
-        SoftwareProject projectTicketApp = new SoftwareProject ("TicketApp", "App for buying tickets.");
-        SoftwareProject projectWeatherApp = new SoftwareProject ("WeatherApp", "App for displaying weather info.");
+        SoftwareProject projectTicketApp = new SoftwareProject ("TicketApp", "App for buying tickets.", ProjectStatus.IN_PROGRESS);
+        SoftwareProject projectWeatherApp = new SoftwareProject ("WeatherApp", "App for displaying weather info.", ProjectStatus.IN_PLANNING);
 
         ProjectService projectService = new ProjectService(projectTicketApp);
 

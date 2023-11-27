@@ -1,6 +1,8 @@
 package solvd.training.student.clients;
 
-public final class Client implements Contract {
+import solvd.training.student.clients.interfaces.Contractualizable;
+
+public final class Client implements Contractualizable {
 
     private String firstName;
     private String lastName;

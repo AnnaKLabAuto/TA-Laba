@@ -1,6 +1,7 @@
 package solvd.training.student.product;
 
 import solvd.training.student.employees.OfficeEmployee;
+import solvd.training.student.enums.ProjectStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,17 +9,23 @@ import java.util.Objects;
 
 public abstract class Project {
 
-    private static int nextProjectId = 1;
+    private static int nextProjectId;
     private final int idOfProject;
     private final String name;
     private final String description;
+    private final ProjectStatus status;
     private final List<Task> tasks;
     private final List<OfficeEmployee> employeeList;
 
-    public Project(String name, String description) {
+    static {
+        nextProjectId = 1;
+    }
+
+    public Project(String name, String description, ProjectStatus status) {
         this.idOfProject = nextProjectId++;
         this.name = name;
         this.description = description;
+        this.status = status;
         this.tasks = new ArrayList<>();
         this.employeeList = new ArrayList<>();
     }

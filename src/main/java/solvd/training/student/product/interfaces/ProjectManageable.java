@@ -1,8 +1,8 @@
-package solvd.training.student.product;
+package solvd.training.student.product.interfaces;
 
 import solvd.training.student.employees.OfficeEmployee;
 
-public interface ProjectManagement {
+public interface ProjectManageable {
     void planProject();
     void scheduleProject();
     void monitorProject();

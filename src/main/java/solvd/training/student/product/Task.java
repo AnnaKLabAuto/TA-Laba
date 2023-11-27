@@ -1,6 +1,7 @@
 package solvd.training.student.product;
 
 import solvd.training.student.employees.OfficeEmployee;
+import solvd.training.student.enums.TaskPriority;
 
 import java.util.Objects;
 
@@ -9,10 +10,12 @@ public class Task {
     private String name;
     private String description;
     private OfficeEmployee assignedEmployee;
+    private TaskPriority taskPriority;
 
-    public Task(String name, String description) {
+    public Task(String name, String description, TaskPriority taskPriority) {
         this.name = name;
         this.description = description;
+        this.taskPriority = taskPriority;
     }
 
     public String getName() {
