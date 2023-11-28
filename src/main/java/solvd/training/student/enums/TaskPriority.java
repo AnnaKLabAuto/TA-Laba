@@ -5,6 +5,10 @@ public enum TaskPriority {
     MEDIUM(2),
     LOW(3);
 
+    static {
+        System.out.println("Initializing task priority...");
+    }
+
     private final int priorityLevel;
 
     TaskPriority(int priorityLevel) {

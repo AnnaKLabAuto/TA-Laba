@@ -5,4 +5,8 @@ public enum ProjectStatus {
     IN_PROGRESS,
     ON_HOLD,
     COMPLETED;
+
+    static {
+        System.out.println("Initializing project status...");
+    }
 }
