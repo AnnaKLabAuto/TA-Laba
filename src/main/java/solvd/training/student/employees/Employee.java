@@ -62,6 +62,10 @@ public abstract class Employee {
         this.salary = salary;
     }
 
+    public EmploymentStatus getStatus() {
+        return status;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +

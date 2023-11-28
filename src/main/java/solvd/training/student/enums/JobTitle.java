@@ -1,7 +1,7 @@
 package solvd.training.student.enums;
 
 public enum JobTitle {
-    SOFTWARE_ENGINEER("software Engineer"),
+    SOFTWARE_ENGINEER("Software Engineer"),
     PRODUCT_MANAGER("Product Manager"),
     ACCOUNTANT("Accountant");
 

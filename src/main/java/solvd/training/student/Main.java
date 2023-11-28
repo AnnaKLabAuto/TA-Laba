@@ -5,6 +5,7 @@ import solvd.training.student.employees.*;
 import solvd.training.student.enums.*;
 import solvd.training.student.exceptions.DuplicateEmployeeException;
 import solvd.training.student.exceptions.EmployeeNotFoundException;
+import solvd.training.student.lambdas.CheckEmployeeStatus;
 import solvd.training.student.lambdas.GetEmployeeById;
 import solvd.training.student.lambdas.RaiseFunction;
 import solvd.training.student.product.SoftwareProject;
@@ -27,7 +28,7 @@ public class Main {
         Department accountingDepartment = new Department("Finance", "");
 
         OfficeEmployee employee1 = new OfficeEmployee(
-                "Franziska" ,
+                "Franziska",
                 "Waltraud",
                 itDepartment,
                 JobTitle.SOFTWARE_ENGINEER,
@@ -45,12 +46,12 @@ public class Main {
                 7000);
 
         OfficeEmployee employee3 = new OfficeEmployee(
-                "Julia" ,
+                "Julia",
                 "Waltraud",
                 itDepartment,
                 JobTitle.SOFTWARE_ENGINEER,
                 EmploymentStatus.PART_TIME,
-                LeaveType.NO_LEAVE,
+                LeaveType.SICK_LEAVE,
                 3000);
 
         Manager manager = new Manager(
@@ -108,7 +109,7 @@ public class Main {
         projectService.addTaskToEmployee(employee1, task1);
 
 
-        //Utilizes lambdas from the `util.function` package to demonstrate different types of functional interfaces:
+        //lambdas from the `util.function` package
         Supplier<SoftwareProject> addSoftwareProject = () -> new SoftwareProject(
                 "FoodApp",
                 "App for searching food recipes",
@@ -141,9 +142,7 @@ public class Main {
         };
         getTasksAndPrint.accept(projectTicketApp);
 
-        //Create 3 custom Lambdas functions with generics.
-        System.out.println("//----------------------------------------------------------//");
-
+        //custom lambdas functions with generics.
         RaiseFunction<Employee> giveRaise = (employee) -> {
             int currentSalary = employee.getSalary();
             double raisePercentage = 0.30;
@@ -159,15 +158,17 @@ public class Main {
             Employee employee = employeeRepository.findEmployeeById(2);
             return employee;
         };
-        Employee employee = getEmployeeById.getEmployeeById(2);
-        System.out.println("Employee with ID 2: " + employee.getFirstName() + " " + employee.getLastName());
+        Employee searchedEmployee = getEmployeeById.getEmployeeById(2);
+        System.out.println("Employee with ID 2: " + searchedEmployee.getFirstName() + " " + searchedEmployee.getLastName());
 
-
-
-
-
-
-
-
+        CheckEmployeeStatus<Employee> checkIfEmployeeIsOnVacation = (employee) -> {
+            return employee.getStatus().equals(LeaveType.NO_LEAVE);
+        };
+        boolean isEmployeeOnVacation = checkIfEmployeeIsOnVacation.checkIfEmployeeIsOnVacation(employee2);
+        if (isEmployeeOnVacation) {
+            System.out.println("Employee is on vacation.");
+        } else {
+            System.out.println("Employee is not on vacation.");
+        }
     }
 }
