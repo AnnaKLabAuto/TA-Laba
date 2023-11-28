@@ -1,4 +1,4 @@
-package solvd.training.student.employees.interfaces;
+package solvd.training.student.employees;
 
 public interface Workable {
     void startWork();

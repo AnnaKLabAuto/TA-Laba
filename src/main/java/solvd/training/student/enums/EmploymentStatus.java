@@ -5,7 +5,7 @@ public enum EmploymentStatus {
     PART_TIME(20),
     CONTRACTOR(0);
 
-    private int workingHours;
+    private final int workingHours;
 
     EmploymentStatus(int workingHours) {
         this.workingHours = workingHours;

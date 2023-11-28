@@ -5,6 +5,7 @@ import solvd.training.student.employees.*;
 import solvd.training.student.enums.*;
 import solvd.training.student.exceptions.DuplicateEmployeeException;
 import solvd.training.student.exceptions.EmployeeNotFoundException;
+import solvd.training.student.lambdas.GetEmployeeById;
 import solvd.training.student.lambdas.RaiseFunction;
 import solvd.training.student.product.SoftwareProject;
 import solvd.training.student.product.Task;
@@ -19,9 +20,6 @@ import java.util.function.Supplier;
 
 public class Main {
 
-    public static <E extends Employee> Predicate<E> hasTaskEmployee(Task task) {
-        return employee -> task.getAssignedEmployee().equals(employee);
-    }
 
     public static void main(String[] args) throws DuplicateEmployeeException, EmployeeNotFoundException{
 
@@ -45,6 +43,15 @@ public class Main {
                 EmploymentStatus.PART_TIME,
                 LeaveType.NO_LEAVE,
                 7000);
+
+        OfficeEmployee employee3 = new OfficeEmployee(
+                "Julia" ,
+                "Waltraud",
+                itDepartment,
+                JobTitle.SOFTWARE_ENGINEER,
+                EmploymentStatus.PART_TIME,
+                LeaveType.NO_LEAVE,
+                3000);
 
         Manager manager = new Manager(
                 "Thomas",
@@ -88,26 +95,38 @@ public class Main {
 
         EmployeeService employeeService = new EmployeeService(employeeRepository);
         employeeService.addEmployee(employee1);
+        employeeService.addEmployee(employee2);
+        employeeService.addEmployee(employee3);
         employeeService.addEmployee(manager);
+        employeeService.addEmployee(accountant);
         employeeService.displayEmployeeInfo(employee1);
 
         ProjectService projectService = new ProjectService(projectTicketApp);
-        projectService.addTaskToProject(task1);
         projectService.addEmployeeToProject(employee1);
+        projectService.addEmployeeToProject(employee2);
+        projectService.addTaskToProject(task1);
         projectService.addTaskToEmployee(employee1, task1);
 
-        //----------------------------------------------------------
-        Supplier<SoftwareProject> addSoftwareProject = () -> new SoftwareProject("FoodApp", "App for searching food recipes", ProjectStatus.IN_PLANNING);
+
+        //Utilizes lambdas from the `util.function` package to demonstrate different types of functional interfaces:
+        Supplier<SoftwareProject> addSoftwareProject = () -> new SoftwareProject(
+                "FoodApp",
+                "App for searching food recipes",
+                ProjectStatus.IN_PLANNING);
         SoftwareProject newProject = addSoftwareProject.get();
         System.out.println("New project created:");
         System.out.println(newProject);
 
-        Predicate<SoftwareProject> checkIsProjectInProgress = project -> projectTicketApp.getStatus().equals(ProjectStatus.IN_PROGRESS);
+        Predicate<SoftwareProject> checkIsProjectInProgress = project -> projectTicketApp
+                .getStatus()
+                .equals(ProjectStatus.IN_PROGRESS);
         boolean isInProgress = checkIsProjectInProgress.test(projectWeatherApp);
         System.out.println("Is project in progress: " + isInProgress);
 
         Consumer<Employee> displayEmployeeSalary = employee ->
-                System.out.println("The Salary of " + employee.getFirstName() + " " + employee.getLastName() + "is " + employee.getSalary());
+                System.out.println("The Salary of " +
+                        employee.getFirstName() + " " +
+                        employee.getLastName() + "is " + employee.getSalary());
         displayEmployeeSalary.accept(employee1);
 
         Function<Task,Employee> getAssignedEmployee = Task::getAssignedEmployee;
@@ -122,8 +141,10 @@ public class Main {
         };
         getTasksAndPrint.accept(projectTicketApp);
 
-        System.out.println("//----------------------------------------------------------");
-        RaiseFunction<Employee> giveRaise = employee -> {
+        //Create 3 custom Lambdas functions with generics.
+        System.out.println("//----------------------------------------------------------//");
+
+        RaiseFunction<Employee> giveRaise = (employee) -> {
             int currentSalary = employee.getSalary();
             double raisePercentage = 0.30;
             int raiseAmount = (int) (currentSalary * raisePercentage);
@@ -134,11 +155,19 @@ public class Main {
         };
         giveRaise.giveRaise(employee1);
 
-        Predicate<OfficeEmployee> taskPredicate = hasTaskEmployee(task1);
-        System.out.println("Does employee1 have the task? " + taskPredicate.test(employee1));
-        System.out.println("Does employee2 have the task? " + taskPredicate.test(employee2));
+        GetEmployeeById<OfficeEmployee> getEmployeeById = (id) -> {
+            Employee employee = employeeRepository.findEmployeeById(2);
+            return employee;
+        };
+        Employee employee = getEmployeeById.getEmployeeById(2);
+        System.out.println("Employee with ID 2: " + employee.getFirstName() + " " + employee.getLastName());
+
+
+
+
+
+
+
 
     }
-
-
 }

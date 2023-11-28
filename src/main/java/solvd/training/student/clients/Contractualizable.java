@@ -1,4 +1,4 @@
-package solvd.training.student.clients.interfaces;
+package solvd.training.student.clients;
 
 public interface Contractualizable {
     void createContract();

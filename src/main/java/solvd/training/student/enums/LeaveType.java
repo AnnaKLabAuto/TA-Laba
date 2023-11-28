@@ -6,7 +6,7 @@ public enum LeaveType {
     VACATION_LEAVE(10),
     PERSONAL_LEAVE(2);
 
-    private int maxDaysPerYear;
+    private final int maxDaysPerYear;
 
     LeaveType(int maxDaysPerYear) {
         this.maxDaysPerYear = maxDaysPerYear;

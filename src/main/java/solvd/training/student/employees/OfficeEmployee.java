@@ -2,8 +2,6 @@ package solvd.training.student.employees;
 
 
 import solvd.training.student.company.Department;
-import solvd.training.student.employees.interfaces.Communicatable;
-import solvd.training.student.employees.interfaces.Workable;
 import solvd.training.student.enums.EmploymentStatus;
 import solvd.training.student.enums.JobTitle;
 import solvd.training.student.enums.LeaveType;

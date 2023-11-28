@@ -1,13 +1,11 @@
 package solvd.training.student.employees;
 
 import solvd.training.student.company.Department;
-import solvd.training.student.employees.interfaces.Communicatable;
-import solvd.training.student.employees.interfaces.Workable;
 import solvd.training.student.enums.EmploymentStatus;
 import solvd.training.student.enums.JobTitle;
 import solvd.training.student.enums.LeaveType;
-import solvd.training.student.product.interfaces.ProjectManageable;
-import solvd.training.student.product.interfaces.ProjectWorkable;
+import solvd.training.student.product.ProjectManageable;
+import solvd.training.student.product.ProjectWorkable;
 
 import java.util.HashSet;
 import java.util.Set;
