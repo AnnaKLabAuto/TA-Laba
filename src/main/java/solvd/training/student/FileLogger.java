@@ -17,7 +17,9 @@ public class FileLogger {
     public static void main(String[] args) {
         Appender appender = FileAppender.newBuilder()
                 .withFileName("logs/output.log")
-                .withLayout(PatternLayout.newBuilder().withPattern("%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n").build())
+                .withLayout(PatternLayout.newBuilder()
+                        .withPattern("%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n")
+                        .build())
                 .setName("File")
                 .build();
 

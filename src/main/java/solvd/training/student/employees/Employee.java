@@ -82,7 +82,9 @@ public abstract class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return idOfEmployee == employee.idOfEmployee && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(department, employee.department) && Objects.equals(title, employee.title);
+        return idOfEmployee == employee.idOfEmployee && Objects.equals(firstName, employee.firstName) &&
+                Objects.equals(lastName, employee.lastName) && Objects.equals(department, employee.department) &&
+                Objects.equals(title, employee.title);
     }
 
     @Override

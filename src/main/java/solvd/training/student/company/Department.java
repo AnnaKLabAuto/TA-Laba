@@ -40,7 +40,9 @@ public class Department {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Department that = (Department) o;
-        return Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(clientProjects, that.clientProjects) && Objects.equals(managerProjects, that.managerProjects);
+        return Objects.equals(name, that.name) && Objects.equals(description,
+                that.description) && Objects.equals(clientProjects,
+                that.clientProjects) && Objects.equals(managerProjects, that.managerProjects);
     }
 
     @Override

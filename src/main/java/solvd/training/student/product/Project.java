@@ -78,7 +78,8 @@ public abstract class Project {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Project project = (Project) o;
-        return Objects.equals(name, project.name) && Objects.equals(description, project.description) && Objects.equals(tasks, project.tasks) && Objects.equals(employeeList, project.employeeList);
+        return Objects.equals(name, project.name) && Objects.equals(description, project.description) &&
+                Objects.equals(tasks, project.tasks) && Objects.equals(employeeList, project.employeeList);
     }
 
     @Override

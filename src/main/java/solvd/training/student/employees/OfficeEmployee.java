@@ -8,7 +8,8 @@ import solvd.training.student.enums.LeaveType;
 
 public class OfficeEmployee extends Employee implements Workable, Communicatable {
 
-    public OfficeEmployee(String firstName, String lastName, Department department, JobTitle title, EmploymentStatus status, LeaveType type, int salary) {
+    public OfficeEmployee(String firstName, String lastName, Department department, JobTitle title, EmploymentStatus status,
+                          LeaveType type, int salary) {
         super(firstName, lastName, department, title, status, type, salary);
     }
 

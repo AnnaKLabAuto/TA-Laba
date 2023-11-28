@@ -14,8 +14,8 @@ public class Manager extends Employee implements Workable, Communicatable, Proje
 
     private final Set<OfficeEmployee> projectTeam;
 
-    public Manager(String firstName, String lastName, Department department, JobTitle title, EmploymentStatus status, LeaveType type,
-                   int salary) {
+    public Manager(String firstName, String lastName, Department department, JobTitle title, EmploymentStatus status,
+                   LeaveType type, int salary) {
         super(firstName, lastName, department, title, status, type, salary);
         this.projectTeam = new HashSet<>();
     }
