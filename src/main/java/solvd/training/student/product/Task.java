@@ -39,6 +39,9 @@ public class Task {
     }
 
     public void assignToEmployee(OfficeEmployee employee) {
+        if (employee == null) {
+            throw new IllegalArgumentException("Employee cannot be null");
+        }
         this.assignedEmployee = employee;
     }
 

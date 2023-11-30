@@ -1,11 +1,22 @@
 package solvd.training.student.customlinkedlist;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
-public class CustomLinkedList<T> {
+public class CustomLinkedList<T> implements Iterable<T>{
 
     private Node<T> head;
     private int size;
+
+    private static class Node<T> {
+        final T data;
+        Node<T> next;
+
+        public Node(T data) {
+            this.data = data;
+        }
+    }
 
     public CustomLinkedList() {
         head = null;
@@ -37,29 +48,7 @@ public class CustomLinkedList<T> {
         return current.data;
     }
 
-    public void remove(int index) {
-        checkIndexBounds(index);
-        if (index == 0) {
-            head = head.next;
-        } else {
-            Node<T> previous = head;
-            for (int i = 0; i < index - 1; i++) {
-                previous = previous.next;
-            }
-            previous.next = previous.next.next;
-        }
-        size--;
-    }
 
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        Node<T> current = head;
-        while (current != null) {
-            sb.append(current.data).append(", ");
-            current = current.next;
-        }
-        return sb.toString();
-    }
 
     private void checkIndexBounds(int index) {
         if (index < 0 || index >= size) {
@@ -83,12 +72,63 @@ public class CustomLinkedList<T> {
         return -1;
     }
 
-    private static class Node<T> {
-        final T data;
-        Node<T> next;
-
-        public Node(T data) {
-            this.data = data;
+    public boolean contains(T data) {
+        Node<T> current = head;
+        while (current != null) {
+            if (current.data.equals(data)) {
+                return true;
+            }
+            current = current.next;
         }
+        return false;
+    }
+
+    public void remove(T data) {
+        if (!contains(data)) {
+            throw new NoSuchElementException("Element not found in the list");
+        }
+        Node<T> current = head;
+        Node<T> previous = null;
+        while (current != null && current.data != data) {
+            previous = current;
+            current = current.next;
+        }
+        if (current != null) {
+            if (previous == null) {
+                head = current.next;
+            } else {
+                previous.next = current.next;
+            }
+
+            size--;
+        }
+    }
+
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            Node current = head;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public T next() {
+                if (hasNext()) {
+                    T data = (T) current.data;
+                    current = current.next;
+                    return data;
+                }
+                return null;
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException("Remove not implemented.");
+            }
+
+        };
+
     }
 }

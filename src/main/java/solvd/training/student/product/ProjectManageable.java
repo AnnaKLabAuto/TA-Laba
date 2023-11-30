@@ -6,6 +6,5 @@ public interface ProjectManageable {
     void planProject();
     void scheduleProject();
     void monitorProject();
-    void addEmployeeToProject(OfficeEmployee employee);
 
 }

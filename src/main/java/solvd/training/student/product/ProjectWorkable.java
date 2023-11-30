@@ -1,6 +1,6 @@
 package solvd.training.student.product;
 
 public interface ProjectWorkable {
-    void metingAboutProject();
+    void meetingAboutProject(Project project);
     void workOnTask();
 }

@@ -106,7 +106,7 @@ public class Main {
         projectService.addEmployeeToProject(employee1);
         projectService.addEmployeeToProject(employee2);
         projectService.addTaskToProject(task1);
-        projectService.addTaskToEmployee(employee1, task1);
+        projectService.assignTaskToEmployee(employee1, task1);
 
 
         //lambdas from the `util.function` package

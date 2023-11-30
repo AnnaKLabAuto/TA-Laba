@@ -4,6 +4,7 @@ import solvd.training.student.company.Department;
 import solvd.training.student.enums.EmploymentStatus;
 import solvd.training.student.enums.JobTitle;
 import solvd.training.student.enums.LeaveType;
+import solvd.training.student.product.Project;
 import solvd.training.student.product.ProjectManageable;
 import solvd.training.student.product.ProjectWorkable;
 
@@ -55,17 +56,19 @@ public class Manager extends Employee implements Workable, Communicatable, Proje
         System.out.println("Monitoring the project.");
     }
 
-    @Override
-    public void addEmployeeToProject(OfficeEmployee employee) {}
 
     public void addEmployeeToTeam(OfficeEmployee employee) {
         projectTeam.add(employee);
     }
 
     @Override
-    public void metingAboutProject() {}
+    public void meetingAboutProject(Project project) {
+        System.out.println("Meeting about " + project.getName());
+    }
 
     @Override
-    public void workOnTask() {}
+    public void workOnTask() {
+        System.out.println("Working on task.");
+    }
 
 }
