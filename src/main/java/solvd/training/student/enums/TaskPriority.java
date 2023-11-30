@@ -11,7 +11,6 @@ public enum TaskPriority {
         System.out.println("Initializing task priority...");
     }
 
-
     TaskPriority(int priorityLevel) {
         this.priorityLevel = priorityLevel;
     }

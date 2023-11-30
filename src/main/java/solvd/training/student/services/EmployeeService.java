@@ -22,7 +22,7 @@ public class EmployeeService {
     }
 
     public void removeEmployee(Employee employee) {
-        System.out.println("Removed employee: "+ employee.getFirstName() + " " + employee.getLastName());
+        System.out.println("Removed employee: " + employee.getFirstName() + " " + employee.getLastName());
         employeeRepository.removeEmployee(employee);
     }
 
@@ -34,11 +34,11 @@ public class EmployeeService {
             throw new EmployeeNotFoundException("Employee with ID " + employeeId + " not found.");
         }
 
-        System.out.printf("Employee Information: " +
-                        "- Name: %s  " +
-                        "- Last Name: %s  " +
-                        "- Title: %s " +
-                        "- Department: %s\n", foundEmployee.getFirstName(), foundEmployee.getLastName(),
+        System.out.printf("Employee Information: "
+                        + "- Name: %s  "
+                        + "- Last Name: %s  "
+                        + "- Title: %s "
+                        + "- Department: %s\n", foundEmployee.getFirstName(), foundEmployee.getLastName(),
         foundEmployee.getTitle(), foundEmployee.getDepartment().getName());
 
     }

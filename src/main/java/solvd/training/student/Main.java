@@ -21,8 +21,7 @@ import java.util.function.Supplier;
 
 public class Main {
 
-
-    public static void main(String[] args) throws DuplicateEmployeeException, EmployeeNotFoundException{
+    public static void main(String[] args) throws DuplicateEmployeeException, EmployeeNotFoundException {
 
         Department itDepartment = new Department("IT", "");
         Department accountingDepartment = new Department("Finance", "");
@@ -82,12 +81,12 @@ public class Main {
                 "Adding login system",
                 TaskPriority.HIGH);
 
-        SoftwareProject projectTicketApp = new SoftwareProject (
+        SoftwareProject projectTicketApp = new SoftwareProject(
                 "TicketApp",
                 "App for buying tickets.",
                 ProjectStatus.IN_PROGRESS);
 
-        SoftwareProject projectWeatherApp = new SoftwareProject (
+        SoftwareProject projectWeatherApp = new SoftwareProject(
                 "WeatherApp",
                 "App for displaying weather info.",
                 ProjectStatus.COMPLETED);
@@ -106,6 +105,7 @@ public class Main {
         projectService.addEmployeeToProject(employee1);
         projectService.addEmployeeToProject(employee2);
         projectService.addTaskToProject(task1);
+        projectService.addTaskToProject(task2);
         projectService.assignTaskToEmployee(employee1, task1);
 
 
@@ -125,12 +125,13 @@ public class Main {
         System.out.println("Is project in progress: " + isInProgress);
 
         Consumer<Employee> displayEmployeeSalary = employee ->
-                System.out.println("The Salary of " +
-                        employee.getFirstName() + " " +
-                        employee.getLastName() + "is " + employee.getSalary());
+                System.out.println("The Salary of "
+                        + employee.getFirstName() + " "
+                        + employee.getLastName() + "is "
+                        + employee.getSalary());
         displayEmployeeSalary.accept(employee1);
 
-        Function<Task,Employee> getAssignedEmployee = Task::getAssignedEmployee;
+        Function<Task, Employee> getAssignedEmployee = Task::getAssignedEmployee;
         Employee assignedEmployee = getAssignedEmployee.apply(task1);
         System.out.println("Assigned employee: " + assignedEmployee.getFirstName() + " " + assignedEmployee.getLastName());
 
@@ -149,26 +150,18 @@ public class Main {
             int raiseAmount = (int) (currentSalary * raisePercentage);
             int newSalary = currentSalary + raiseAmount;
             employee.setSalary(newSalary);
-            System.out.println("Employee " + employee.getFirstName() + " " + employee.getLastName() +
-                    " has received a raise. New salary: " + newSalary);
+            System.out.println("Employee " + employee.getFirstName() + " " + employee.getLastName()
+                    + " has received a raise. New salary: " + newSalary);
         };
         giveRaise.giveRaise(employee1);
 
-        GetEmployeeById<OfficeEmployee> getEmployeeById = (id) -> {
-            Employee employee = employeeRepository.findEmployeeById(2);
-            return employee;
-        };
+        GetEmployeeById<OfficeEmployee> getEmployeeById = (id) -> employeeRepository.findEmployeeById(2);
         Employee searchedEmployee = getEmployeeById.getEmployeeById(2);
         System.out.println("Employee with ID 2: " + searchedEmployee.getFirstName() + " " + searchedEmployee.getLastName());
 
-        CheckEmployeeStatus<Employee> checkIfEmployeeIsOnVacation = (employee) -> {
-            return employee.getStatus().equals(LeaveType.NO_LEAVE);
-        };
+        CheckEmployeeStatus<Employee> checkIfEmployeeIsOnVacation = (employee) ->
+                employee.getStatus().equals(LeaveType.NO_LEAVE);
         boolean isEmployeeOnVacation = checkIfEmployeeIsOnVacation.checkIfEmployeeIsOnVacation(employee2);
-        if (isEmployeeOnVacation) {
-            System.out.println("Employee is on vacation.");
-        } else {
-            System.out.println("Employee is not on vacation.");
-        }
+        System.out.println(isEmployeeOnVacation ? "Employee is on vacation." : "Employee is not on vacation.");
     }
 }

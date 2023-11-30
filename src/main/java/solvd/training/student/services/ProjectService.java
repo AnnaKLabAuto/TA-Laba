@@ -1,7 +1,6 @@
 package solvd.training.student.services;
 
 import solvd.training.student.employees.OfficeEmployee;
-import solvd.training.student.enums.ProjectStatus;
 import solvd.training.student.exceptions.DuplicateEmployeeException;
 import solvd.training.student.exceptions.DuplicateTaskException;
 import solvd.training.student.exceptions.ProjectNotFoundException;
@@ -10,8 +9,6 @@ import solvd.training.student.product.Project;
 import solvd.training.student.product.SoftwareProject;
 import solvd.training.student.product.Task;
 
-import java.util.function.BiFunction;
-
 public class ProjectService {
 
     private final SoftwareProject project;
@@ -19,7 +16,6 @@ public class ProjectService {
     public ProjectService(SoftwareProject project) {
         this.project = project;
     }
-
 
     public void addTaskToProject(Task task) {
         project.addTask(task);
@@ -58,11 +54,9 @@ public class ProjectService {
         if (projectToDisplay.getIdOfProject() != project.getIdOfProject()) {
             throw new ProjectNotFoundException("Project not found");
         }
-        System.out.printf("Project Information: " +
-                        "- Name: %s  " +
-                        "- Description: %s\n", projectToDisplay.getName() + "\n - " + projectToDisplay.getDescription()
+        System.out.printf("Project Information: "
+                + "- Name: %s  "
+                + "- Description: %s\n", projectToDisplay.getName() + "\n - " + projectToDisplay.getDescription()
         );
     }
-
-
 }
