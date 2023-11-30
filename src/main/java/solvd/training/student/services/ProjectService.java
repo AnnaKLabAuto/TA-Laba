@@ -32,7 +32,7 @@ public class ProjectService {
         project.addEmployee(employee);
     }
 
-    public void addTaskToEmployee(OfficeEmployee employee, Task task) {
+    public void assignTaskToEmployee(OfficeEmployee employee, Task task) {
         try {
             if (!project.getTasks().contains(task)) {
                 throw new TaskAssignmentException("Task cannot be assigned, because it's not part of the project");

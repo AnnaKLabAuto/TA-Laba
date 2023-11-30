@@ -36,13 +36,12 @@ public class Main {
         employeeService.displayEmployeeInfo(employee1);
 
         SoftwareProject projectTicketApp = new SoftwareProject ("TicketApp", "App for buying tickets.");
-        SoftwareProject projectWeatherApp = new SoftwareProject ("WeatherApp", "App for displaying weather info.");
 
         ProjectService projectService = new ProjectService(projectTicketApp);
 
         projectService.addTaskToProject(task1);
         projectService.addEmployeeToProject(employee1);
-        projectService.addTaskToEmployee(employee2, task1);
+        projectService.assignTaskToEmployee(employee2, task1);
 
 
     }

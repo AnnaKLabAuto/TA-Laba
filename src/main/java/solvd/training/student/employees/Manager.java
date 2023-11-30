@@ -1,6 +1,7 @@
 package solvd.training.student.employees;
 
 import solvd.training.student.company.Department;
+import solvd.training.student.product.Project;
 import solvd.training.student.product.ProjectManagement;
 import solvd.training.student.product.ProjectWork;
 
@@ -51,17 +52,18 @@ public class Manager extends Employee implements WorkFlow, TeamMember, ProjectMa
         System.out.println("Monitoring the project.");
     }
 
-    @Override
-    public void addEmployeeToProject(OfficeEmployee employee) {}
 
     public void addEmployeeToTeam(OfficeEmployee employee) {
         projectTeam.add(employee);
     }
 
     @Override
-    public void metingAboutProject() {}
+    public void meetingAboutProject(Project project) {
+        System.out.println("Meeting about " + project.getName());
+    }
 
     @Override
-    public void workOnTask() {}
-
+    public void workOnTask() {
+        System.out.println("Working on task.");
+    }
 }
