@@ -124,7 +124,7 @@ public class Main {
         logger.info(isEmployeeOnVacation ? "Employee is on vacation" : "Employee is not on vacation");
 
         boolean isManagerPresentInProject = projectService.hasManager.hasManager(projectTicketApp, manager);
-        logger.info(isEmployeeOnVacation ? "Project has a manager" : "Project does not have a manager");
+        logger.info(isManagerPresentInProject ? "Project has a manager" : "Project does not have a manager");
 
         Supplier<SoftwareProject> addSoftwareProject = () -> new SoftwareProject(
                 "FoodApp",
