@@ -39,12 +39,10 @@ public class ProjectService {
             }
             if (task.getAssignedEmployee() == null) {
                 task.assignToEmployee(employee);
-                System.out.println("Added task: " + task.getName() + " to employee " + employee.getFirstName() + " " +
-                        employee.getLastName());
-            } else {
-                throw new DuplicateTaskException("Task is already assigned to " + task.getAssignedEmployee().getFirstName() +
-                        " " + task.getAssignedEmployee().getLastName());
-            }
+                System.out.println("Added task: " + task.getName() + " to employee " + employee.getFirstName() + " "
+                        + employee.getLastName());
+            } throw new DuplicateTaskException("Task is already assigned to " + task.getAssignedEmployee().getFirstName()
+                    + " " + task.getAssignedEmployee().getLastName());
         } catch (TaskAssignmentException | DuplicateTaskException e) {
             System.out.println(e.getMessage());
         }

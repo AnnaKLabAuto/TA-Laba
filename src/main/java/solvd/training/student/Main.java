@@ -5,15 +5,13 @@ import solvd.training.student.employees.*;
 import solvd.training.student.enums.*;
 import solvd.training.student.exceptions.DuplicateEmployeeException;
 import solvd.training.student.exceptions.EmployeeNotFoundException;
-import solvd.training.student.lambdas.CheckEmployeeStatus;
-import solvd.training.student.lambdas.GetEmployeeById;
-import solvd.training.student.lambdas.RaiseFunction;
 import solvd.training.student.product.SoftwareProject;
 import solvd.training.student.product.Task;
 import solvd.training.student.services.EmployeeService;
 import solvd.training.student.services.ProjectService;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -92,13 +90,16 @@ public class Main {
                 ProjectStatus.COMPLETED);
 
         EmployeeRepository<Employee> employeeRepository = new EmployeeRepository<>();
-
         EmployeeService employeeService = new EmployeeService(employeeRepository);
-        employeeService.addEmployee(employee1);
-        employeeService.addEmployee(employee2);
-        employeeService.addEmployee(employee3);
-        employeeService.addEmployee(manager);
-        employeeService.addEmployee(accountant);
+
+        List<Employee> employees = new ArrayList<>();
+        employees.add(employee1);
+        employees.add(employee2);
+        employees.add(employee3);
+        employees.add(manager);
+        employees.add(accountant);
+
+        employeeService.addEmployees(employees);
         employeeService.displayEmployeeInfo(employee1);
 
         ProjectService projectService = new ProjectService(projectTicketApp);
@@ -108,15 +109,21 @@ public class Main {
         projectService.addTaskToProject(task2);
         projectService.assignTaskToEmployee(employee1, task1);
 
+        employeeService.giveRaise.giveRaise(employee1);
 
-        //lambdas from the `util.function` package
+        boolean isEmployeeOnVacation = employeeService.checkIfEmployeeIsOnVacation.checkIfEmployeeIsOnVacation(employee1);
+        System.out.println(isEmployeeOnVacation ? "Employee is on vacation." : "Employee is not on vacation.");
+
+//        GetEmployeeById<OfficeEmployee> getEmployeeById = (id) -> employeeRepository.findEmployeeById(2);
+//        Employee searchedEmployee = getEmployeeById.getEmployeeById(2);
+//        System.out.println("Employee with ID 2: " + searchedEmployee.getFirstName() + " " + searchedEmployee.getLastName());
+
         Supplier<SoftwareProject> addSoftwareProject = () -> new SoftwareProject(
                 "FoodApp",
                 "App for searching food recipes",
                 ProjectStatus.IN_PLANNING);
         SoftwareProject newProject = addSoftwareProject.get();
-        System.out.println("New project created:");
-        System.out.println(newProject);
+        System.out.println("New project created:" + newProject.getName());
 
         Predicate<SoftwareProject> checkIsProjectInProgress = project -> projectTicketApp
                 .getStatus()
@@ -124,11 +131,10 @@ public class Main {
         boolean isInProgress = checkIsProjectInProgress.test(projectWeatherApp);
         System.out.println("Is project in progress: " + isInProgress);
 
-        Consumer<Employee> displayEmployeeSalary = employee ->
-                System.out.println("The Salary of "
-                        + employee.getFirstName() + " "
-                        + employee.getLastName() + "is "
-                        + employee.getSalary());
+        Consumer<Employee> displayEmployeeSalary = employee -> System.out.println("The Salary of "
+                + employee.getFirstName() + " "
+                + employee.getLastName() + "is "
+                + employee.getSalary());
         displayEmployeeSalary.accept(employee1);
 
         Function<Task, Employee> getAssignedEmployee = Task::getAssignedEmployee;
@@ -142,26 +148,5 @@ public class Main {
             }
         };
         getTasksAndPrint.accept(projectTicketApp);
-
-        //custom lambdas functions with generics.
-        RaiseFunction<Employee> giveRaise = (employee) -> {
-            int currentSalary = employee.getSalary();
-            double raisePercentage = 0.30;
-            int raiseAmount = (int) (currentSalary * raisePercentage);
-            int newSalary = currentSalary + raiseAmount;
-            employee.setSalary(newSalary);
-            System.out.println("Employee " + employee.getFirstName() + " " + employee.getLastName()
-                    + " has received a raise. New salary: " + newSalary);
-        };
-        giveRaise.giveRaise(employee1);
-
-        GetEmployeeById<OfficeEmployee> getEmployeeById = (id) -> employeeRepository.findEmployeeById(2);
-        Employee searchedEmployee = getEmployeeById.getEmployeeById(2);
-        System.out.println("Employee with ID 2: " + searchedEmployee.getFirstName() + " " + searchedEmployee.getLastName());
-
-        CheckEmployeeStatus<Employee> checkIfEmployeeIsOnVacation = (employee) ->
-                employee.getStatus().equals(LeaveType.NO_LEAVE);
-        boolean isEmployeeOnVacation = checkIfEmployeeIsOnVacation.checkIfEmployeeIsOnVacation(employee2);
-        System.out.println(isEmployeeOnVacation ? "Employee is on vacation." : "Employee is not on vacation.");
     }
 }
