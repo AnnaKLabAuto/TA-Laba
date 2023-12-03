@@ -36,16 +36,6 @@ public class ProjectService {
         project.addEmployee(employee);
     }
 
-    public HasProjectManager<Project, Manager> hasManager = (project, manager ) -> {
-        for (Employee employee : project.getEmployeeList()) {
-            if (employee instanceof Manager && employee.getTitle().equals(JobTitle.MANAGER)) {
-                return true;
-            }
-        }
-        return false;
-    };
-
-
     public void assignTaskToEmployee(OfficeEmployee employee, Task task) {
         try {
             if (!project.getTasks().contains(task)) {
@@ -61,6 +51,15 @@ public class ProjectService {
             System.out.println(e.getMessage());
         }
     }
+
+    public HasProjectManager<Project, Manager> hasManager = (project, manager ) -> {
+        for (Employee employee : project.getEmployeeList()) {
+            if (employee instanceof Manager && employee.getTitle().equals(JobTitle.MANAGER)) {
+                return true;
+            }
+        }
+        return false;
+    };
 
     public void displayProjectInfo(Project projectToDisplay) throws ProjectNotFoundException {
         if (projectToDisplay.getIdOfProject() != project.getIdOfProject()) {
