@@ -1,5 +1,6 @@
 package solvd.training.student.services;
 
+
 import solvd.training.student.employees.Employee;
 import solvd.training.student.employees.Manager;
 import solvd.training.student.employees.OfficeEmployee;
@@ -12,9 +13,12 @@ import solvd.training.student.lambdas.HasProjectManager;
 import solvd.training.student.product.Project;
 import solvd.training.student.product.SoftwareProject;
 import solvd.training.student.product.Task;
+import org.apache.logging.log4j.Logger;
+import solvd.training.student.logger.LoggerUtil;
 
 public class ProjectService {
 
+    Logger logger = LoggerUtil.getLogger();
     private final SoftwareProject project;
 
     public ProjectService(SoftwareProject project) {
@@ -23,7 +27,7 @@ public class ProjectService {
 
     public void addTaskToProject(Task task) {
         project.addTask(task);
-        System.out.println("Added task: " + task.getName() + " to project " + project.getName());
+        logger.info("Added task: " + task.getName() + " to project " + project.getName());
     }
 
     public <T extends Employee> void addEmployeeToProject(T employee) throws DuplicateEmployeeException {
@@ -43,7 +47,7 @@ public class ProjectService {
             }
             if (task.getAssignedEmployee() == null) {
                 task.assignToEmployee(employee);
-                System.out.println("Added task: " + task.getName() + " to employee " + employee.getFirstName() + " "
+                logger.info("Added task: " + task.getName() + " to employee " + employee.getFirstName() + " "
                         + employee.getLastName());
             } throw new DuplicateTaskException("Task is already assigned to " + task.getAssignedEmployee().getFirstName()
                     + " " + task.getAssignedEmployee().getLastName());
@@ -54,22 +58,15 @@ public class ProjectService {
 
     public HasProjectManager<Project, Manager> hasManager = (project, manager ) -> {
         for (Employee employee : project.getEmployeeList()) {
-            if (employee instanceof Manager && employee.getTitle().equals(JobTitle.MANAGER)) {
-                return true;
-            }
+            if (employee instanceof Manager && employee.getTitle().equals(JobTitle.MANAGER)) return true;
         }
         return false;
     };
 
-    public void displayProjectInfo(Project projectToDisplay) throws ProjectNotFoundException {
+    public Project displayProjectInfo(Project projectToDisplay) throws ProjectNotFoundException {
         if (projectToDisplay.getIdOfProject() != project.getIdOfProject()) {
             throw new ProjectNotFoundException("Project not found");
         }
-        System.out.printf("Project Information: "
-                + "- Name: %s  "
-                + "- Description: %s\n", projectToDisplay.getName() + "\n - " + projectToDisplay.getDescription()
-        );
+       return projectToDisplay;
     }
-
-
 }

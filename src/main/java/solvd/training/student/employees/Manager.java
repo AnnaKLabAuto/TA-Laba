@@ -1,5 +1,7 @@
 package solvd.training.student.employees;
 
+import org.apache.logging.log4j.Logger;
+import solvd.training.student.logger.LoggerUtil;
 import solvd.training.student.company.Department;
 import solvd.training.student.enums.EmploymentStatus;
 import solvd.training.student.enums.JobTitle;
@@ -14,6 +16,7 @@ import java.util.Set;
 public class Manager extends Employee implements Workable, Communicatable, ProjectManageable, ProjectWorkable {
 
     private final Set<OfficeEmployee> projectTeam;
+    Logger logger = LoggerUtil.getLogger();
 
     public Manager(String firstName, String lastName, Department department, JobTitle title, EmploymentStatus status,
                    LeaveType type, int salary) {
@@ -23,39 +26,38 @@ public class Manager extends Employee implements Workable, Communicatable, Proje
 
     @Override
     public void startWork() {
-        System.out.println("Working");
+        logger.info("Working");
     }
 
     @Override
     public void finishWork() {
-        System.out.println("Finished working");
+        logger.info("Finished working");
     }
 
     @Override
     public void takeBreak() {
-        System.out.println("Need a break.");
+        logger.info("Need a break.");
     }
 
     @Override
     public void communicateWith(Employee employee) {
-        System.out.println("Communicating with " + employee.getFirstName() + " " + employee.getLastName());
+        logger.info("Communicating with " + employee.getFirstName() + " " + employee.getLastName());
     }
 
     @Override
     public void planProject() {
-        System.out.println("Planning the project.");
+        logger.info("Planning the project.");
     }
 
     @Override
     public void scheduleProject() {
-        System.out.println("Scheduling the project.");
+        logger.info("Scheduling the project.");
     }
 
     @Override
     public void monitorProject() {
-        System.out.println("Monitoring the project.");
+        logger.info("Monitoring the project.");
     }
-
 
     public void addEmployeeToTeam(OfficeEmployee employee) {
         projectTeam.add(employee);
@@ -63,12 +65,12 @@ public class Manager extends Employee implements Workable, Communicatable, Proje
 
     @Override
     public void meetingAboutProject(Project project) {
-        System.out.println("Meeting about " + project.getName());
+        logger.info("Meeting about " + project.getName());
     }
 
     @Override
     public void workOnTask() {
-        System.out.println("Working on task.");
+        logger.info("Working on task.");
     }
 
 }

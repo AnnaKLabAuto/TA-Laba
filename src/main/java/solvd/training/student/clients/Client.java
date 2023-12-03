@@ -1,10 +1,14 @@
 package solvd.training.student.clients;
 
+import org.apache.logging.log4j.Logger;
+import solvd.training.student.logger.LoggerUtil;
 public final class Client implements Contractualizable {
 
     private String firstName;
     private String lastName;
     private String email;
+
+    Logger logger = LoggerUtil.getLogger();
 
     public Client(String firstName, String lastName, String email) {
         this.firstName = firstName;
@@ -13,22 +17,14 @@ public final class Client implements Contractualizable {
     }
 
     @Override
-    public void createContract() {
-        System.out.println("Creating a new contract.");
-    }
+    public void createContract() {logger.info("Creating a new contract.");}
 
     @Override
-    public void reviewContract() {
-        System.out.println("Reviewing the contract.");
-    }
+    public void reviewContract() {logger.info("Reviewing the contract.");}
 
     @Override
-    public void fulfillContract() {
-        System.out.println("Fulfilling the contract.");
-    }
+    public void fulfillContract() {logger.info("Fulfilling the contract.");}
 
     @Override
-    public void terminateContract() {
-        System.out.println("Terminating the contract.");
-    }
+    public void terminateContract() {logger.info("Terminating the contract.");}
 }

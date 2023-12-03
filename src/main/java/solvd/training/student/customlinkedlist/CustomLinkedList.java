@@ -87,12 +87,15 @@ public class CustomLinkedList<T> implements Iterable<T>{
         if (!contains(data)) {
             throw new NoSuchElementException("Element not found in the list");
         }
+
         Node<T> current = head;
         Node<T> previous = null;
+
         while (current != null && current.data != data) {
             previous = current;
             current = current.next;
         }
+
         if (current != null) {
             if (previous == null) {
                 head = current.next;
