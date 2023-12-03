@@ -31,6 +31,17 @@ public class EmployeeService {
         employeeRepository.removeEmployee(employee);
     }
 
+    public RaiseFunction<Employee> giveRaise = (employee) -> {
+        int currentSalary = employee.getSalary();
+        int raiseAmount = (int) (currentSalary * raisePercentage);
+        employee.setSalary(currentSalary + raiseAmount);
+        System.out.println("Employee " + employee.getFirstName() + " " + employee.getLastName()
+                + " has received a raise");
+    };
+
+    public CheckEmployeeStatus<Employee> checkIfEmployeeIsOnVacation = (employee) ->
+            employee.getStatus().equals(LeaveType.NO_LEAVE);
+
     public void displayEmployeeInfo(OfficeEmployee employee) throws EmployeeNotFoundException {
         int employeeId = employee.getIdOfEmployee();
         Employee foundEmployee = employeeRepository.findEmployeeById(employeeId);
@@ -43,15 +54,4 @@ public class EmployeeService {
                         + "- Department: %s\n", foundEmployee.getFirstName(), foundEmployee.getLastName(),
                 foundEmployee.getTitle(), foundEmployee.getDepartment().getName());
     }
-
-    public RaiseFunction<Employee> giveRaise = (employee) -> {
-        int currentSalary = employee.getSalary();
-        int raiseAmount = (int) (currentSalary * raisePercentage);
-        employee.setSalary(currentSalary + raiseAmount);
-        System.out.println("Employee " + employee.getFirstName() + " " + employee.getLastName()
-                + " has received a raise");
-    };
-
-    public CheckEmployeeStatus<Employee> checkIfEmployeeIsOnVacation = (employee) ->
-            employee.getStatus().equals(LeaveType.NO_LEAVE);
 }

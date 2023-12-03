@@ -62,8 +62,6 @@ public class ProjectService {
         }
     }
 
-
-
     public void displayProjectInfo(Project projectToDisplay) throws ProjectNotFoundException {
         if (projectToDisplay.getIdOfProject() != project.getIdOfProject()) {
             throw new ProjectNotFoundException("Project not found");
