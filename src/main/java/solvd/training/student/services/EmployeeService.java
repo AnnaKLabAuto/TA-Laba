@@ -34,7 +34,7 @@ public class EmployeeService {
     public void displayEmployeeInfo(OfficeEmployee employee) throws EmployeeNotFoundException {
         int employeeId = employee.getIdOfEmployee();
         Employee foundEmployee = employeeRepository.findEmployeeById(employeeId);
-        if (foundEmployee == null) throw new EmployeeNotFoundException("Employee with ID " + employeeId + " not found.");
+        if (foundEmployee == null) throw new EmployeeNotFoundException("Employee with ID " + employeeId + " not found");
 
         System.out.printf("Employee Information: "
                         + "- Name: %s  "
@@ -49,7 +49,7 @@ public class EmployeeService {
         int raiseAmount = (int) (currentSalary * raisePercentage);
         employee.setSalary(currentSalary + raiseAmount);
         System.out.println("Employee " + employee.getFirstName() + " " + employee.getLastName()
-                + " has received a raise.");
+                + " has received a raise");
     };
 
     public CheckEmployeeStatus<Employee> checkIfEmployeeIsOnVacation = (employee) ->

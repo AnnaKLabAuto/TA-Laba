@@ -55,7 +55,7 @@ public class Main {
                 "Thomas",
                 "Smith",
                 itDepartment,
-                JobTitle.PRODUCT_MANAGER,
+                JobTitle.MANAGER,
                 EmploymentStatus.FULL_TIME,
                 LeaveType.NO_LEAVE,
                 10000);
@@ -105,6 +105,7 @@ public class Main {
         ProjectService projectService = new ProjectService(projectTicketApp);
         projectService.addEmployeeToProject(employee1);
         projectService.addEmployeeToProject(employee2);
+        projectService.addEmployeeToProject(manager);
         projectService.addTaskToProject(task1);
         projectService.addTaskToProject(task2);
         projectService.assignTaskToEmployee(employee1, task1);
@@ -112,11 +113,11 @@ public class Main {
         employeeService.giveRaise.giveRaise(employee1);
 
         boolean isEmployeeOnVacation = employeeService.checkIfEmployeeIsOnVacation.checkIfEmployeeIsOnVacation(employee1);
-        System.out.println(isEmployeeOnVacation ? "Employee is on vacation." : "Employee is not on vacation.");
+        System.out.println(isEmployeeOnVacation ? "Employee is on vacation" : "Employee is not on vacation");
 
-//        GetEmployeeById<OfficeEmployee> getEmployeeById = (id) -> employeeRepository.findEmployeeById(2);
-//        Employee searchedEmployee = getEmployeeById.getEmployeeById(2);
-//        System.out.println("Employee with ID 2: " + searchedEmployee.getFirstName() + " " + searchedEmployee.getLastName());
+        boolean isManagerPresentInProject = projectService.hasManager.hasManager(projectTicketApp, manager);
+        System.out.println(isEmployeeOnVacation ? "Project has a manager" : "Project has not have a manager");
+
 
         Supplier<SoftwareProject> addSoftwareProject = () -> new SoftwareProject(
                 "FoodApp",

@@ -2,7 +2,7 @@ package solvd.training.student.enums;
 
 public enum JobTitle {
     SOFTWARE_ENGINEER("Software Engineer"),
-    PRODUCT_MANAGER("Product Manager"),
+    MANAGER("Manager"),
     ACCOUNTANT("Accountant");
 
     private final String title;

@@ -1,10 +1,14 @@
 package solvd.training.student.services;
 
+import solvd.training.student.employees.Employee;
+import solvd.training.student.employees.Manager;
 import solvd.training.student.employees.OfficeEmployee;
+import solvd.training.student.enums.JobTitle;
 import solvd.training.student.exceptions.DuplicateEmployeeException;
 import solvd.training.student.exceptions.DuplicateTaskException;
 import solvd.training.student.exceptions.ProjectNotFoundException;
 import solvd.training.student.exceptions.TaskAssignmentException;
+import solvd.training.student.lambdas.HasProjectManager;
 import solvd.training.student.product.Project;
 import solvd.training.student.product.SoftwareProject;
 import solvd.training.student.product.Task;
@@ -22,15 +26,25 @@ public class ProjectService {
         System.out.println("Added task: " + task.getName() + " to project " + project.getName());
     }
 
-    public void addEmployeeToProject(OfficeEmployee employee) throws DuplicateEmployeeException {
+    public <T extends Employee> void addEmployeeToProject(T employee) throws DuplicateEmployeeException {
         int employeeId = employee.getIdOfEmployee();
-        for (OfficeEmployee existingEmployee : project.getEmployeeList()) {
+        for (Employee existingEmployee : project.getEmployeeList()) {
             if (existingEmployee.getIdOfEmployee() == employeeId) {
                 throw new DuplicateEmployeeException("Employee with ID " + employeeId + " already exists in the project");
             }
         }
         project.addEmployee(employee);
     }
+
+    public HasProjectManager<Project, Manager> hasManager = (project, manager ) -> {
+        for (Employee employee : project.getEmployeeList()) {
+            if (employee instanceof Manager && employee.getTitle().equals(JobTitle.MANAGER)) {
+                return true;
+            }
+        }
+        return false;
+    };
+
 
     public void assignTaskToEmployee(OfficeEmployee employee, Task task) {
         try {
@@ -48,6 +62,8 @@ public class ProjectService {
         }
     }
 
+
+
     public void displayProjectInfo(Project projectToDisplay) throws ProjectNotFoundException {
         if (projectToDisplay.getIdOfProject() != project.getIdOfProject()) {
             throw new ProjectNotFoundException("Project not found");
@@ -57,4 +73,6 @@ public class ProjectService {
                 + "- Description: %s\n", projectToDisplay.getName() + "\n - " + projectToDisplay.getDescription()
         );
     }
+
+
 }

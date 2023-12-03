@@ -1,5 +1,6 @@
 package solvd.training.student.product;
 
+import solvd.training.student.employees.Employee;
 import solvd.training.student.employees.OfficeEmployee;
 import solvd.training.student.enums.ProjectStatus;
 
@@ -15,7 +16,7 @@ public abstract class Project {
     private final String description;
     private final ProjectStatus status;
     private final List<Task> tasks;
-    private final List<OfficeEmployee> employeeList;
+    private final List<Employee> employeeList;
 
     static {
         nextProjectId = 1;
@@ -46,7 +47,7 @@ public abstract class Project {
         return tasks;
     }
 
-    public List<OfficeEmployee> getEmployeeList() {
+    public List<Employee> getEmployeeList() {
         return employeeList;
     }
 
@@ -54,7 +55,7 @@ public abstract class Project {
         tasks.add(task);
     }
 
-    public void addEmployee(OfficeEmployee employee) {
+    public void addEmployee(Employee employee) {
         employeeList.add(employee);
     }
 
