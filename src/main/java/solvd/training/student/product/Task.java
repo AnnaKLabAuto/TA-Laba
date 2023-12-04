@@ -54,6 +54,8 @@ public class Task {
         return "Task{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", assignedEmployee=" + assignedEmployee +
+                ", taskPriority=" + taskPriority +
                 '}';
     }
 
@@ -62,11 +64,11 @@ public class Task {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return Objects.equals(name, task.name) && Objects.equals(description, task.description);
+        return Objects.equals(name, task.name) && Objects.equals(description, task.description) && Objects.equals(assignedEmployee, task.assignedEmployee) && taskPriority == task.taskPriority;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description);
+        return Objects.hash(name, description, assignedEmployee, taskPriority);
     }
 }

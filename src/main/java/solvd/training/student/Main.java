@@ -13,16 +13,18 @@ import solvd.training.student.product.SoftwareProject;
 import solvd.training.student.product.Task;
 import solvd.training.student.services.EmployeeService;
 import solvd.training.student.services.ProjectService;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class Main {
 
-    public static void main(String[] args) throws DuplicateEmployeeException, EmployeeNotFoundException, ProjectNotFoundException {
+    public static void main(String[] args) throws DuplicateEmployeeException, EmployeeNotFoundException, ProjectNotFoundException, ClassNotFoundException {
 
         Logger logger = LogManager.getLogger(EmployeeService.class);
 
@@ -118,6 +120,7 @@ public class Main {
         Project foundProject = projectService.displayProjectInfo(projectTicketApp);
         logger.info(foundProject);
 
+        // ---------- lambdas ---------- //
         employeeService.giveRaise.giveRaise(employee1);
 
         boolean isEmployeeOnVacation = employeeService.checkIfEmployeeIsOnVacation.checkIfEmployeeIsOnVacation(employee1);

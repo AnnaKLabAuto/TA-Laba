@@ -58,3 +58,172 @@
 [INFO ] 2023-12-03 18:56:56.406 [main] EmployeeService - Assigned employee: Franziska Waltraud
 [INFO ] 2023-12-03 18:56:56.407 [main] EmployeeService - Task{name='Add button', description='Adding button to interface'}
 [INFO ] 2023-12-03 18:56:56.407 [main] EmployeeService - Task{name='Add login system', description='Adding login system'}
+[INFO ] 2023-12-04 12:20:01.258 [main] LoggerUtil - Added employee: Franziska Waltraud
+[INFO ] 2023-12-04 12:20:01.261 [main] LoggerUtil - Added employee: Hubertus Andrea
+[INFO ] 2023-12-04 12:20:01.261 [main] LoggerUtil - Added employee: Julia Waltraud
+[INFO ] 2023-12-04 12:20:01.261 [main] LoggerUtil - Added employee: Thomas Smith
+[INFO ] 2023-12-04 12:20:01.261 [main] LoggerUtil - Added employee: Maria Doe
+[INFO ] 2023-12-04 12:20:01.269 [main] EmployeeService - Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}
+[INFO ] 2023-12-04 12:20:01.272 [main] LoggerUtil - Added task: Add button to project TicketApp
+[INFO ] 2023-12-04 12:20:01.273 [main] LoggerUtil - Added task: Add login system to project TicketApp
+[INFO ] 2023-12-04 12:20:01.275 [main] LoggerUtil - Added task: Add button to employee Franziska Waltraud
+[INFO ] 2023-12-04 12:20:01.276 [main] EmployeeService - Project{idOfProject=1, name='TicketApp', description='App for buying tickets.', tasks=[Task{name='Add button', description='Adding button to interface'}, Task{name='Add login system', description='Adding login system'}], employeeList=[Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=2, firstName='Hubertus', lastName='Andrea', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=4, firstName='Thomas', lastName='Smith', department=solvd.training.student.company.Department@438fa76, title='MANAGER'}]}
+[INFO ] 2023-12-04 12:20:01.277 [main] LoggerUtil - Franziska Waltraud has received a raise
+[INFO ] 2023-12-04 12:20:01.280 [main] EmployeeService - The Salary of Franziska Waltraudis 6500
+[INFO ] 2023-12-04 12:20:01.281 [main] EmployeeService - Task{name='Add button', description='Adding button to interface'}
+[INFO ] 2023-12-04 12:20:01.281 [main] EmployeeService - Task{name='Add login system', description='Adding login system'}
+[INFO ] 2023-12-04 12:45:33.043 [main] LoggerUtil - Added employee: Franziska Waltraud
+[INFO ] 2023-12-04 12:45:33.045 [main] LoggerUtil - Added employee: Hubertus Andrea
+[INFO ] 2023-12-04 12:45:33.045 [main] LoggerUtil - Added employee: Julia Waltraud
+[INFO ] 2023-12-04 12:45:33.046 [main] LoggerUtil - Added employee: Thomas Smith
+[INFO ] 2023-12-04 12:45:33.046 [main] LoggerUtil - Added employee: Maria Doe
+[INFO ] 2023-12-04 12:45:33.051 [main] EmployeeService - Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}
+[INFO ] 2023-12-04 12:45:33.054 [main] LoggerUtil - Added task: Add button to project TicketApp
+[INFO ] 2023-12-04 12:45:33.054 [main] LoggerUtil - Added task: Add login system to project TicketApp
+[INFO ] 2023-12-04 12:45:33.057 [main] LoggerUtil - Added task: Add button to employee Franziska Waltraud
+[INFO ] 2023-12-04 12:45:33.058 [main] EmployeeService - Project{idOfProject=1, name='TicketApp', description='App for buying tickets.', tasks=[Task{name='Add button', description='Adding button to interface'}, Task{name='Add login system', description='Adding login system'}], employeeList=[Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=2, firstName='Hubertus', lastName='Andrea', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=4, firstName='Thomas', lastName='Smith', department=solvd.training.student.company.Department@438fa76, title='MANAGER'}]}
+[INFO ] 2023-12-04 12:45:33.058 [main] LoggerUtil - Franziska Waltraud has received a raise
+[INFO ] 2023-12-04 12:45:33.062 [main] EmployeeService - The Salary of Franziska Waltraudis 6500
+[INFO ] 2023-12-04 12:45:33.063 [main] EmployeeService - Task{name='Add button', description='Adding button to interface'}
+[INFO ] 2023-12-04 12:45:33.063 [main] EmployeeService - Task{name='Add login system', description='Adding login system'}
+[INFO ] 2023-12-04 14:09:53.920 [main] LoggerUtil - Added employee: Franziska Waltraud
+[INFO ] 2023-12-04 14:09:53.923 [main] LoggerUtil - Added employee: Hubertus Andrea
+[INFO ] 2023-12-04 14:09:53.923 [main] LoggerUtil - Added employee: Julia Waltraud
+[INFO ] 2023-12-04 14:09:53.923 [main] LoggerUtil - Added employee: Thomas Smith
+[INFO ] 2023-12-04 14:09:53.923 [main] LoggerUtil - Added employee: Maria Doe
+[INFO ] 2023-12-04 14:09:53.928 [main] EmployeeService - Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}
+[INFO ] 2023-12-04 14:09:53.931 [main] LoggerUtil - Added task: Add button to project TicketApp
+[INFO ] 2023-12-04 14:09:53.931 [main] LoggerUtil - Added task: Add login system to project TicketApp
+[INFO ] 2023-12-04 14:09:53.933 [main] LoggerUtil - Added task: Add button to employee Franziska Waltraud
+[INFO ] 2023-12-04 14:09:53.934 [main] EmployeeService - Project{idOfProject=1, name='TicketApp', description='App for buying tickets.', tasks=[Task{name='Add button', description='Adding button to interface'}, Task{name='Add login system', description='Adding login system'}], employeeList=[Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=2, firstName='Hubertus', lastName='Andrea', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=4, firstName='Thomas', lastName='Smith', department=solvd.training.student.company.Department@438fa76, title='MANAGER'}]}
+[INFO ] 2023-12-04 14:09:53.934 [main] LoggerUtil - Franziska Waltraud has received a raise
+[INFO ] 2023-12-04 14:09:53.937 [main] EmployeeService - The Salary of Franziska Waltraudis 6500
+[INFO ] 2023-12-04 14:09:53.938 [main] EmployeeService - Task{name='Add button', description='Adding button to interface'}
+[INFO ] 2023-12-04 14:09:53.938 [main] EmployeeService - Task{name='Add login system', description='Adding login system'}
+[INFO ] 2023-12-04 14:12:20.465 [main] LoggerUtil - Added employee: Franziska Waltraud
+[INFO ] 2023-12-04 14:12:20.468 [main] LoggerUtil - Added employee: Hubertus Andrea
+[INFO ] 2023-12-04 14:12:20.468 [main] LoggerUtil - Added employee: Julia Waltraud
+[INFO ] 2023-12-04 14:12:20.468 [main] LoggerUtil - Added employee: Thomas Smith
+[INFO ] 2023-12-04 14:12:20.468 [main] LoggerUtil - Added employee: Maria Doe
+[INFO ] 2023-12-04 14:12:20.474 [main] EmployeeService - Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}
+[INFO ] 2023-12-04 14:12:20.475 [main] LoggerUtil - Added task: Add button to project TicketApp
+[INFO ] 2023-12-04 14:12:20.476 [main] LoggerUtil - Added task: Add login system to project TicketApp
+[INFO ] 2023-12-04 14:12:20.478 [main] LoggerUtil - Added task: Add button to employee Franziska Waltraud
+[INFO ] 2023-12-04 14:12:20.479 [main] EmployeeService - Project{idOfProject=1, name='TicketApp', description='App for buying tickets.', tasks=[Task{name='Add button', description='Adding button to interface'}, Task{name='Add login system', description='Adding login system'}], employeeList=[Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=2, firstName='Hubertus', lastName='Andrea', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=4, firstName='Thomas', lastName='Smith', department=solvd.training.student.company.Department@438fa76, title='MANAGER'}]}
+[INFO ] 2023-12-04 14:12:20.479 [main] LoggerUtil - Franziska Waltraud has received a raise
+[INFO ] 2023-12-04 14:12:20.482 [main] EmployeeService - The Salary of Franziska Waltraudis 6500
+[INFO ] 2023-12-04 14:12:20.483 [main] EmployeeService - Task{name='Add button', description='Adding button to interface'}
+[INFO ] 2023-12-04 14:12:20.483 [main] EmployeeService - Task{name='Add login system', description='Adding login system'}
+[INFO ] 2023-12-04 14:16:31.714 [main] LoggerUtil - Added employee: Franziska Waltraud
+[INFO ] 2023-12-04 14:16:31.716 [main] LoggerUtil - Added employee: Hubertus Andrea
+[INFO ] 2023-12-04 14:16:31.716 [main] LoggerUtil - Added employee: Julia Waltraud
+[INFO ] 2023-12-04 14:16:31.716 [main] LoggerUtil - Added employee: Thomas Smith
+[INFO ] 2023-12-04 14:16:31.716 [main] LoggerUtil - Added employee: Maria Doe
+[INFO ] 2023-12-04 14:16:31.717 [main] EmployeeService - Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}
+[INFO ] 2023-12-04 14:16:31.719 [main] LoggerUtil - Added task: Add button to project TicketApp
+[INFO ] 2023-12-04 14:16:31.719 [main] LoggerUtil - Added task: Add login system to project TicketApp
+[INFO ] 2023-12-04 14:16:31.722 [main] LoggerUtil - Added task: Add button to employee Franziska Waltraud
+[INFO ] 2023-12-04 14:16:31.723 [main] EmployeeService - Project{idOfProject=1, name='TicketApp', description='App for buying tickets.', tasks=[Task{name='Add button', description='Adding button to interface'}, Task{name='Add login system', description='Adding login system'}], employeeList=[Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=2, firstName='Hubertus', lastName='Andrea', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=4, firstName='Thomas', lastName='Smith', department=solvd.training.student.company.Department@438fa76, title='MANAGER'}]}
+[INFO ] 2023-12-04 14:16:31.723 [main] LoggerUtil - Franziska Waltraud has received a raise
+[INFO ] 2023-12-04 14:16:31.727 [main] EmployeeService - The Salary of Franziska Waltraudis 6500
+[INFO ] 2023-12-04 14:16:31.727 [main] EmployeeService - Task{name='Add button', description='Adding button to interface'}
+[INFO ] 2023-12-04 14:16:31.727 [main] EmployeeService - Task{name='Add login system', description='Adding login system'}
+[INFO ] 2023-12-04 14:17:45.209 [main] LoggerUtil - Added employee: Franziska Waltraud
+[INFO ] 2023-12-04 14:17:45.211 [main] LoggerUtil - Added employee: Hubertus Andrea
+[INFO ] 2023-12-04 14:17:45.211 [main] LoggerUtil - Added employee: Julia Waltraud
+[INFO ] 2023-12-04 14:17:45.211 [main] LoggerUtil - Added employee: Thomas Smith
+[INFO ] 2023-12-04 14:17:45.211 [main] LoggerUtil - Added employee: Maria Doe
+[INFO ] 2023-12-04 14:17:45.212 [main] EmployeeService - Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}
+[INFO ] 2023-12-04 14:17:45.214 [main] LoggerUtil - Added task: Add button to project TicketApp
+[INFO ] 2023-12-04 14:17:45.214 [main] LoggerUtil - Added task: Add login system to project TicketApp
+[INFO ] 2023-12-04 14:17:45.217 [main] LoggerUtil - Added task: Add button to employee Franziska Waltraud
+[INFO ] 2023-12-04 14:17:45.217 [main] EmployeeService - Project{idOfProject=1, name='TicketApp', description='App for buying tickets.', tasks=[Task{name='Add button', description='Adding button to interface'}, Task{name='Add login system', description='Adding login system'}], employeeList=[Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=2, firstName='Hubertus', lastName='Andrea', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=4, firstName='Thomas', lastName='Smith', department=solvd.training.student.company.Department@438fa76, title='MANAGER'}]}
+[INFO ] 2023-12-04 14:17:45.217 [main] LoggerUtil - Franziska Waltraud has received a raise
+[INFO ] 2023-12-04 14:17:45.220 [main] EmployeeService - The Salary of Franziska Waltraudis 6500
+[INFO ] 2023-12-04 14:17:45.221 [main] EmployeeService - Task{name='Add button', description='Adding button to interface'}
+[INFO ] 2023-12-04 14:17:45.221 [main] EmployeeService - Task{name='Add login system', description='Adding login system'}
+[INFO ] 2023-12-04 14:18:58.224 [main] LoggerUtil - Added employee: Franziska Waltraud
+[INFO ] 2023-12-04 14:18:58.226 [main] LoggerUtil - Added employee: Hubertus Andrea
+[INFO ] 2023-12-04 14:18:58.226 [main] LoggerUtil - Added employee: Julia Waltraud
+[INFO ] 2023-12-04 14:18:58.227 [main] LoggerUtil - Added employee: Thomas Smith
+[INFO ] 2023-12-04 14:18:58.227 [main] LoggerUtil - Added employee: Maria Doe
+[INFO ] 2023-12-04 14:18:58.233 [main] EmployeeService - Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}
+[INFO ] 2023-12-04 14:18:58.235 [main] LoggerUtil - Added task: Add button to project TicketApp
+[INFO ] 2023-12-04 14:18:58.235 [main] LoggerUtil - Added task: Add login system to project TicketApp
+[INFO ] 2023-12-04 14:18:58.238 [main] LoggerUtil - Added task: Add button to employee Franziska Waltraud
+[INFO ] 2023-12-04 14:18:58.239 [main] EmployeeService - Project{idOfProject=1, name='TicketApp', description='App for buying tickets.', tasks=[Task{name='Add button', description='Adding button to interface'}, Task{name='Add login system', description='Adding login system'}], employeeList=[Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=2, firstName='Hubertus', lastName='Andrea', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=4, firstName='Thomas', lastName='Smith', department=solvd.training.student.company.Department@438fa76, title='MANAGER'}]}
+[INFO ] 2023-12-04 14:18:58.239 [main] LoggerUtil - Franziska Waltraud has received a raise
+[INFO ] 2023-12-04 14:18:58.243 [main] EmployeeService - The Salary of Franziska Waltraudis 6500
+[INFO ] 2023-12-04 14:18:58.244 [main] EmployeeService - Task{name='Add button', description='Adding button to interface'}
+[INFO ] 2023-12-04 14:18:58.244 [main] EmployeeService - Task{name='Add login system', description='Adding login system'}
+[INFO ] 2023-12-04 14:18:58.244 [main] EmployeeService - [Employee{idOfEmployee=3, firstName='Julia', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}]
+[INFO ] 2023-12-04 14:19:38.652 [main] LoggerUtil - Added employee: Franziska Waltraud
+[INFO ] 2023-12-04 14:19:38.654 [main] LoggerUtil - Added employee: Hubertus Andrea
+[INFO ] 2023-12-04 14:19:38.655 [main] LoggerUtil - Added employee: Julia Waltraud
+[INFO ] 2023-12-04 14:19:38.655 [main] LoggerUtil - Added employee: Thomas Smith
+[INFO ] 2023-12-04 14:19:38.655 [main] LoggerUtil - Added employee: Maria Doe
+[INFO ] 2023-12-04 14:19:38.660 [main] EmployeeService - Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}
+[INFO ] 2023-12-04 14:19:38.662 [main] LoggerUtil - Added task: Add button to project TicketApp
+[INFO ] 2023-12-04 14:19:38.662 [main] LoggerUtil - Added task: Add login system to project TicketApp
+[INFO ] 2023-12-04 14:19:38.664 [main] LoggerUtil - Added task: Add button to employee Franziska Waltraud
+[INFO ] 2023-12-04 14:19:38.665 [main] EmployeeService - Project{idOfProject=1, name='TicketApp', description='App for buying tickets.', tasks=[Task{name='Add button', description='Adding button to interface'}, Task{name='Add login system', description='Adding login system'}], employeeList=[Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=2, firstName='Hubertus', lastName='Andrea', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=4, firstName='Thomas', lastName='Smith', department=solvd.training.student.company.Department@438fa76, title='MANAGER'}]}
+[INFO ] 2023-12-04 14:19:38.665 [main] LoggerUtil - Franziska Waltraud has received a raise
+[INFO ] 2023-12-04 14:19:38.669 [main] EmployeeService - The Salary of Franziska Waltraudis 6500
+[INFO ] 2023-12-04 14:19:38.669 [main] EmployeeService - Task{name='Add button', description='Adding button to interface'}
+[INFO ] 2023-12-04 14:19:38.669 [main] EmployeeService - Task{name='Add login system', description='Adding login system'}
+[INFO ] 2023-12-04 14:20:30.016 [main] LoggerUtil - Added employee: Franziska Waltraud
+[INFO ] 2023-12-04 14:20:30.019 [main] LoggerUtil - Added employee: Hubertus Andrea
+[INFO ] 2023-12-04 14:20:30.019 [main] LoggerUtil - Added employee: Julia Waltraud
+[INFO ] 2023-12-04 14:20:30.019 [main] LoggerUtil - Added employee: Thomas Smith
+[INFO ] 2023-12-04 14:20:30.019 [main] LoggerUtil - Added employee: Maria Doe
+[INFO ] 2023-12-04 14:20:30.025 [main] EmployeeService - Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}
+[INFO ] 2023-12-04 14:20:30.027 [main] LoggerUtil - Added task: Add button to project TicketApp
+[INFO ] 2023-12-04 14:20:30.027 [main] LoggerUtil - Added task: Add login system to project TicketApp
+[INFO ] 2023-12-04 14:20:30.030 [main] LoggerUtil - Added task: Add button to employee Franziska Waltraud
+[INFO ] 2023-12-04 14:20:30.031 [main] EmployeeService - Project{idOfProject=1, name='TicketApp', description='App for buying tickets.', tasks=[Task{name='Add button', description='Adding button to interface'}, Task{name='Add login system', description='Adding login system'}], employeeList=[Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=2, firstName='Hubertus', lastName='Andrea', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=4, firstName='Thomas', lastName='Smith', department=solvd.training.student.company.Department@438fa76, title='MANAGER'}]}
+[INFO ] 2023-12-04 14:20:30.031 [main] LoggerUtil - Franziska Waltraud has received a raise
+[INFO ] 2023-12-04 14:20:30.035 [main] EmployeeService - The Salary of Franziska Waltraudis 6500
+[INFO ] 2023-12-04 14:20:30.035 [main] EmployeeService - Task{name='Add button', description='Adding button to interface'}
+[INFO ] 2023-12-04 14:20:30.036 [main] EmployeeService - Task{name='Add login system', description='Adding login system'}
+[INFO ] 2023-12-04 14:20:44.750 [main] LoggerUtil - Added employee: Franziska Waltraud
+[INFO ] 2023-12-04 14:20:44.752 [main] LoggerUtil - Added employee: Hubertus Andrea
+[INFO ] 2023-12-04 14:20:44.752 [main] LoggerUtil - Added employee: Julia Waltraud
+[INFO ] 2023-12-04 14:20:44.753 [main] LoggerUtil - Added employee: Thomas Smith
+[INFO ] 2023-12-04 14:20:44.753 [main] LoggerUtil - Added employee: Maria Doe
+[INFO ] 2023-12-04 14:20:44.759 [main] EmployeeService - Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}
+[INFO ] 2023-12-04 14:20:44.761 [main] LoggerUtil - Added task: Add button to project TicketApp
+[INFO ] 2023-12-04 14:20:44.761 [main] LoggerUtil - Added task: Add login system to project TicketApp
+[INFO ] 2023-12-04 14:20:44.763 [main] LoggerUtil - Added task: Add button to employee Franziska Waltraud
+[INFO ] 2023-12-04 14:20:44.764 [main] EmployeeService - Project{idOfProject=1, name='TicketApp', description='App for buying tickets.', tasks=[Task{name='Add button', description='Adding button to interface'}, Task{name='Add login system', description='Adding login system'}], employeeList=[Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=2, firstName='Hubertus', lastName='Andrea', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=4, firstName='Thomas', lastName='Smith', department=solvd.training.student.company.Department@438fa76, title='MANAGER'}]}
+[INFO ] 2023-12-04 14:20:44.765 [main] LoggerUtil - Franziska Waltraud has received a raise
+[INFO ] 2023-12-04 14:20:44.768 [main] EmployeeService - The Salary of Franziska Waltraudis 6500
+[INFO ] 2023-12-04 14:20:44.769 [main] EmployeeService - Task{name='Add button', description='Adding button to interface'}
+[INFO ] 2023-12-04 14:20:44.769 [main] EmployeeService - Task{name='Add login system', description='Adding login system'}
+[INFO ] 2023-12-04 14:21:42.735 [main] LoggerUtil - Added employee: Franziska Waltraud
+[INFO ] 2023-12-04 14:21:42.738 [main] LoggerUtil - Added employee: Hubertus Andrea
+[INFO ] 2023-12-04 14:21:42.738 [main] LoggerUtil - Added employee: Julia Waltraud
+[INFO ] 2023-12-04 14:21:42.738 [main] LoggerUtil - Added employee: Thomas Smith
+[INFO ] 2023-12-04 14:21:42.738 [main] LoggerUtil - Added employee: Maria Doe
+[INFO ] 2023-12-04 14:21:42.744 [main] EmployeeService - Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}
+[INFO ] 2023-12-04 14:21:42.746 [main] LoggerUtil - Added task: Add button to project TicketApp
+[INFO ] 2023-12-04 14:21:42.746 [main] LoggerUtil - Added task: Add login system to project TicketApp
+[INFO ] 2023-12-04 14:21:42.749 [main] LoggerUtil - Added task: Add button to employee Franziska Waltraud
+[INFO ] 2023-12-04 14:21:42.750 [main] EmployeeService - Project{idOfProject=1, name='TicketApp', description='App for buying tickets.', tasks=[Task{name='Add button', description='Adding button to interface'}, Task{name='Add login system', description='Adding login system'}], employeeList=[Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=2, firstName='Hubertus', lastName='Andrea', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=4, firstName='Thomas', lastName='Smith', department=solvd.training.student.company.Department@438fa76, title='MANAGER'}]}
+[INFO ] 2023-12-04 14:21:42.750 [main] LoggerUtil - Franziska Waltraud has received a raise
+[INFO ] 2023-12-04 14:21:42.753 [main] EmployeeService - The Salary of Franziska Waltraudis 6500
+[INFO ] 2023-12-04 14:21:42.754 [main] EmployeeService - Task{name='Add button', description='Adding button to interface'}
+[INFO ] 2023-12-04 14:21:42.754 [main] EmployeeService - Task{name='Add login system', description='Adding login system'}
+[INFO ] 2023-12-04 14:22:31.097 [main] LoggerUtil - Added employee: Franziska Waltraud
+[INFO ] 2023-12-04 14:22:31.100 [main] LoggerUtil - Added employee: Hubertus Andrea
+[INFO ] 2023-12-04 14:22:31.100 [main] LoggerUtil - Added employee: Julia Waltraud
+[INFO ] 2023-12-04 14:22:31.100 [main] LoggerUtil - Added employee: Thomas Smith
+[INFO ] 2023-12-04 14:22:31.100 [main] LoggerUtil - Added employee: Maria Doe
+[INFO ] 2023-12-04 14:22:31.106 [main] EmployeeService - Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}
+[INFO ] 2023-12-04 14:22:31.108 [main] LoggerUtil - Added task: Add button to project TicketApp
+[INFO ] 2023-12-04 14:22:31.108 [main] LoggerUtil - Added task: Add login system to project TicketApp
+[INFO ] 2023-12-04 14:22:31.111 [main] LoggerUtil - Added task: Add button to employee Franziska Waltraud
+[INFO ] 2023-12-04 14:22:31.112 [main] EmployeeService - Project{idOfProject=1, name='TicketApp', description='App for buying tickets.', tasks=[Task{name='Add button', description='Adding button to interface'}, Task{name='Add login system', description='Adding login system'}], employeeList=[Employee{idOfEmployee=1, firstName='Franziska', lastName='Waltraud', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=2, firstName='Hubertus', lastName='Andrea', department=solvd.training.student.company.Department@438fa76, title='SOFTWARE_ENGINEER'}, Employee{idOfEmployee=4, firstName='Thomas', lastName='Smith', department=solvd.training.student.company.Department@438fa76, title='MANAGER'}]}
+[INFO ] 2023-12-04 14:22:31.112 [main] LoggerUtil - Franziska Waltraud has received a raise
+[INFO ] 2023-12-04 14:22:31.116 [main] EmployeeService - The Salary of Franziska Waltraudis 6500
+[INFO ] 2023-12-04 14:22:31.116 [main] EmployeeService - Task{name='Add button', description='Adding button to interface'}
+[INFO ] 2023-12-04 14:22:31.116 [main] EmployeeService - Task{name='Add login system', description='Adding login system'}

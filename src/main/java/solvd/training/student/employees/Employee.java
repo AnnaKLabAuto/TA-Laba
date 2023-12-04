@@ -34,8 +34,20 @@ public abstract class Employee {
         this.salary = salary;
     }
 
+    public static int getNextEmployeeId() {
+        return nextEmployeeId;
+    }
+
+    public static void setNextEmployeeId(int nextEmployeeId) {
+        Employee.nextEmployeeId = nextEmployeeId;
+    }
+
     public int getIdOfEmployee() {
         return idOfEmployee;
+    }
+
+    public void setIdOfEmployee(int idOfEmployee) {
+        this.idOfEmployee = idOfEmployee;
     }
 
     public String getFirstName() {
@@ -54,16 +66,20 @@ public abstract class Employee {
         return title;
     }
 
+    public EmploymentStatus getStatus() {
+        return status;
+    }
+
+    public LeaveType getType() {
+        return type;
+    }
+
     public int getSalary() {
         return salary;
     }
 
     public void setSalary(int salary) {
         this.salary = salary;
-    }
-
-    public EmploymentStatus getStatus() {
-        return status;
     }
 
     @Override
@@ -73,7 +89,10 @@ public abstract class Employee {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", department=" + department +
-                ", title='" + title + '\'' +
+                ", title=" + title +
+                ", status=" + status +
+                ", type=" + type +
+                ", salary=" + salary +
                 '}';
     }
 
@@ -82,13 +101,11 @@ public abstract class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return idOfEmployee == employee.idOfEmployee && Objects.equals(firstName, employee.firstName) &&
-                Objects.equals(lastName, employee.lastName) && Objects.equals(department, employee.department) &&
-                Objects.equals(title, employee.title);
+        return idOfEmployee == employee.idOfEmployee && salary == employee.salary && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(department, employee.department) && title == employee.title && status == employee.status && type == employee.type;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idOfEmployee, firstName, lastName, department, title);
+        return Objects.hash(idOfEmployee, firstName, lastName, department, title, status, type, salary);
     }
 }
