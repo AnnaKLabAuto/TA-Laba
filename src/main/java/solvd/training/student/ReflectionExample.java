@@ -14,10 +14,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class ReflectionExample {
-    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    public static void main(String[] args) {
 
-        Class<?> managerClass = Class.forName("solvd.training.student.employees.Manager");
         Logger logger = LogManager.getLogger(EmployeeService.class);
+
+        try {
+        Class<?> managerClass = Class.forName("solvd.training.student.employees.Manager");
 
         for (Field field : managerClass.getDeclaredFields()) {
             logger.info(field.getName());
@@ -46,5 +48,10 @@ public class ReflectionExample {
         Method getNameMethod = managerClass.getMethod("getFirstName");
         String name = (String) getNameMethod.invoke(managerObject);
         logger.info("Manager's name: " + name);
+        } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+            logger.error("An error occurred while reflecting on the Manager class:", e);
+        } catch (InstantiationException e) {
+            logger.error("Failed to instantiate Manager object due to InstantiationException:", e);
+        }
     }
 }

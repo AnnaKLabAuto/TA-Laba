@@ -23,7 +23,6 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Main {
@@ -181,34 +180,40 @@ public class Main {
                 .mapToDouble(Employee::getSalary)
                 .average()
                 .getAsDouble();
+        logger.info(averageSalary);
 
         List<String> employeeFullNames = employees.stream()
                 .map(employee -> employee.getFirstName() + " " + employee.getLastName())
-                .collect(Collectors.toList());
+                .toList();
+        logger.info(employeeFullNames);
 
         Map<Client, Stream<Project>> completedProjectsStreams = itDepartment.getCompletedProjectsAsStream();
         for (Map.Entry<Client, Stream<Project>> entry : completedProjectsStreams.entrySet()) {
-            Client client_ = entry.getKey();
+            Client foundClient = entry.getKey();
             Stream<Project> completedProjects = entry.getValue();
 
-            logger.info("Completed projects for client " + client.getFirstName() + " " + client.getLastName());
+            logger.info("Completed projects for client " + foundClient.getFirstName() + " " + foundClient.getLastName());
             completedProjects.forEach(project -> logger.info(project.getName()));
         }
 
         List<Employee> filteredEmployees = allEmployees.stream()
                 .filter(employee -> employee.getSalary() < 6000)
-                .collect(Collectors.toList());
+                .toList();
+        logger.info(employeeFullNames);
 
         boolean hasHighPriorityTask = allTasks.stream()
                 .anyMatch(task -> task.getTaskPriority() == TaskPriority.HIGH);
+        logger.info(hasHighPriorityTask);
 
         Employee firstSickEmployee = allEmployees.stream()
                 .filter(employee -> employee.getType() != LeaveType.SICK_LEAVE)
                 .findFirst()
                 .orElse(null);
+        logger.info(firstSickEmployee);
 
         List<Task> assignedTasks = allTasks.stream()
                 .filter(task -> task.getAssignedEmployee() != null)
-                .collect(Collectors.toList());
+                .toList();
+        logger.info(assignedTasks);
     }
 }
