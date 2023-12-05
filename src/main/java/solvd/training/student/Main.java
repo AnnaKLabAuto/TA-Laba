@@ -133,7 +133,7 @@ public class Main {
         clientProjects.put(client, clientListOfProjects);
         itDepartment.setClientProjects(clientProjects);
 
-        // ---------- lambdas ---------- //
+        // lambdas
         employeeService.giveRaise.giveRaise(employee1);
 
         boolean isEmployeeOnVacation = employeeService.checkIfEmployeeIsOnVacation.checkIfEmployeeIsOnVacation(employee1);
