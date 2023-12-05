@@ -45,6 +45,6 @@ public class ReflectionExample {
         Object managerObject = constructor.newInstance("John", "Smith", itDepartment, JobTitle.MANAGER, EmploymentStatus.FULL_TIME, LeaveType.NO_LEAVE, 10000);
         Method getNameMethod = managerClass.getMethod("getFirstName");
         String name = (String) getNameMethod.invoke(managerObject);
-        System.out.println("Manager's name: " + name);
+        logger.info("Manager's name: " + name);
     }
 }
