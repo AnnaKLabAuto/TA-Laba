@@ -54,17 +54,22 @@ public abstract class Project {
     }
 
     public void addTask(Task task) {
+        if (task == null) {
+            throw new IllegalArgumentException("Task cannot be null");
+        }
         tasks.add(task);
     }
 
     public void addEmployee(Employee employee) {
+        if (employee == null) {
+            throw new IllegalArgumentException("Employee cannot be null");
+        }
         employeeList.add(employee);
     }
 
     public ProjectStatus getStatus() {
         return status;
     }
-
 
     @Override
     public String toString() {

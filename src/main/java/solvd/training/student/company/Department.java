@@ -40,9 +40,9 @@ public class Department {
     public Map<Client, Stream<Project>> getCompletedProjectsAsStream() {
         return clientProjects.entrySet().stream()
                 .collect(Collectors.toMap(
-                        entry -> entry.getKey(),
+                        entry -> Objects.requireNonNull(entry.getKey(), "Client cannot be null"),
                         entry -> entry.getValue().stream()
-                                .filter(project -> project.getStatus().equals(ProjectStatus.COMPLETED))));
+                                .filter(project -> project != null && project.getStatus().equals(ProjectStatus.COMPLETED))));
     }
 
     @Override

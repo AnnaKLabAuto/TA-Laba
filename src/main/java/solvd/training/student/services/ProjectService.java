@@ -16,8 +16,6 @@ import solvd.training.student.product.Task;
 import org.apache.logging.log4j.Logger;
 import solvd.training.student.logger.LoggerUtil;
 
-import java.util.List;
-
 public class ProjectService {
 
     Logger logger = LoggerUtil.getLogger();
@@ -28,8 +26,11 @@ public class ProjectService {
     }
 
     public void addTaskToProject(Task task) {
-        project.addTask(task);
-        logger.info("Added task: " + task.getName() + " to project " + project.getName());
+        if (task != null) {
+            project.addTask(task);
+            logger.info("Added task: " + task.getName() + " to project " + project.getName());
+        }
+        logger.error("Task is null");
     }
 
     public <T extends Employee> void addEmployeeToProject(T employee) throws DuplicateEmployeeException {
@@ -54,7 +55,7 @@ public class ProjectService {
             } throw new DuplicateTaskException("Task is already assigned to " + task.getAssignedEmployee().getFirstName()
                     + " " + task.getAssignedEmployee().getLastName());
         } catch (TaskAssignmentException | DuplicateTaskException e) {
-            System.out.println(e.getMessage());
+            logger.error(e);
         }
     }
 

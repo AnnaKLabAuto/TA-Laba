@@ -45,7 +45,7 @@ public class Task {
         this.assignedEmployee = employee;
     }
 
-    public void unassignFromEmployee() {
+    public void unassignedFromEmployee() {
         this.assignedEmployee = null;
     }
 
