@@ -108,4 +108,5 @@ public abstract class Employee {
     public int hashCode() {
         return Objects.hash(idOfEmployee, firstName, lastName, department, title, status, type, salary);
     }
+
 }

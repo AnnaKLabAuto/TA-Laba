@@ -49,6 +49,14 @@ public class Task {
         this.assignedEmployee = null;
     }
 
+    public TaskPriority getTaskPriority() {
+        return taskPriority;
+    }
+
+    public void setTaskPriority(TaskPriority taskPriority) {
+        this.taskPriority = taskPriority;
+    }
+
     @Override
     public String toString() {
         return "Task{" +

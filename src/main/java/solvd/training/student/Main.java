@@ -2,6 +2,7 @@ package solvd.training.student;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import solvd.training.student.clients.Client;
 import solvd.training.student.company.Department;
 import solvd.training.student.employees.*;
 import solvd.training.student.enums.*;
@@ -14,13 +15,16 @@ import solvd.training.student.product.Task;
 import solvd.training.student.services.EmployeeService;
 import solvd.training.student.services.ProjectService;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -30,6 +34,7 @@ public class Main {
 
         Department itDepartment = new Department("IT", "");
         Department accountingDepartment = new Department("Finance", "");
+        Client client = new Client("Andrew", "Kowalski", "andrew.kowalski@gmail.com");
 
         OfficeEmployee employee1 = new OfficeEmployee(
                 "Franziska",
@@ -46,7 +51,7 @@ public class Main {
                 itDepartment,
                 JobTitle.SOFTWARE_ENGINEER,
                 EmploymentStatus.PART_TIME,
-                LeaveType.NO_LEAVE,
+                LeaveType.SICK_LEAVE,
                 7000);
 
         OfficeEmployee employee3 = new OfficeEmployee(
@@ -120,6 +125,14 @@ public class Main {
         Project foundProject = projectService.displayProjectInfo(projectTicketApp);
         logger.info(foundProject);
 
+        Map<Client, List<Project>> clientProjects = new HashMap<>();
+        List<Project> clientListOfProjects = new ArrayList<>();
+        clientListOfProjects.add(projectTicketApp);
+        clientListOfProjects.add(projectWeatherApp);
+
+        clientProjects.put(client, clientListOfProjects);
+        itDepartment.setClientProjects(clientProjects);
+
         // ---------- lambdas ---------- //
         employeeService.giveRaise.giveRaise(employee1);
 
@@ -159,5 +172,43 @@ public class Main {
             }
         };
         getTasksAndPrint.accept(projectTicketApp);
+
+        // streams
+        List<Employee> allEmployees = employeeRepository.getAllEmployees();
+        List<Task> allTasks = projectTicketApp.getTasks();
+
+        double averageSalary = allEmployees.stream()
+                .mapToDouble(Employee::getSalary)
+                .average()
+                .getAsDouble();
+
+        List<String> employeeFullNames = employees.stream()
+                .map(employee -> employee.getFirstName() + " " + employee.getLastName())
+                .collect(Collectors.toList());
+
+        Map<Client, Stream<Project>> completedProjectsStreams = itDepartment.getCompletedProjectsAsStream();
+        for (Map.Entry<Client, Stream<Project>> entry : completedProjectsStreams.entrySet()) {
+            Client client_ = entry.getKey();
+            Stream<Project> completedProjects = entry.getValue();
+
+            logger.info("Completed projects for client " + client.getFirstName() + " " + client.getLastName());
+            completedProjects.forEach(project -> logger.info(project.getName()));
+        }
+
+        List<Employee> filteredEmployees = allEmployees.stream()
+                .filter(employee -> employee.getSalary() < 6000)
+                .collect(Collectors.toList());
+
+        boolean hasHighPriorityTask = allTasks.stream()
+                .anyMatch(task -> task.getTaskPriority() == TaskPriority.HIGH);
+
+        Employee firstSickEmployee = allEmployees.stream()
+                .filter(employee -> employee.getType() != LeaveType.SICK_LEAVE)
+                .findFirst()
+                .orElse(null);
+
+        List<Task> assignedTasks = allTasks.stream()
+                .filter(task -> task.getAssignedEmployee() != null)
+                .collect(Collectors.toList());
     }
 }

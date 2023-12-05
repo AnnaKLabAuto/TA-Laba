@@ -7,6 +7,7 @@ import solvd.training.student.enums.ProjectStatus;
 public class SoftwareProject extends Project{
 
     Logger logger = LoggerUtil.getLogger();
+
     public SoftwareProject(String name, String description, ProjectStatus status) {
         super(name, description, status);
     }

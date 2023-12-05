@@ -36,4 +36,6 @@ public class OfficeEmployee extends Employee implements Workable, Communicatable
     public void communicateWith(Employee employee)  {
         logger.info("Communicating with " + employee.getFirstName() + " " + employee.getLastName());
     }
+
+
 }

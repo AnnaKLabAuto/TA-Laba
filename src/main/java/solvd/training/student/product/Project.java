@@ -1,10 +1,12 @@
 package solvd.training.student.product;
 
+import solvd.training.student.company.Department;
 import solvd.training.student.employees.Employee;
 import solvd.training.student.employees.OfficeEmployee;
 import solvd.training.student.enums.ProjectStatus;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -63,6 +65,7 @@ public abstract class Project {
         return status;
     }
 
+
     @Override
     public String toString() {
         return "Project{" +
@@ -87,4 +90,5 @@ public abstract class Project {
     public int hashCode() {
         return Objects.hash(name, description, tasks, employeeList);
     }
+
 }

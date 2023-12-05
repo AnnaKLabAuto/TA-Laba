@@ -1,12 +1,11 @@
 package solvd.training.student.company;
 
 import solvd.training.student.clients.Client;
-import solvd.training.student.employees.Manager;
+import solvd.training.student.enums.ProjectStatus;
 import solvd.training.student.product.Project;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Department {
 
@@ -16,11 +15,10 @@ public class Department {
 
     private Map<Client, List<Project>> clientProjects;
 
-    private Map<Manager, List<Project>> managerProjects;
-
     public Department(String name, String description) {
         this.name = name;
         this.description = description;
+        this.clientProjects = new HashMap<>();
     }
 
     public String getName() {
@@ -35,6 +33,18 @@ public class Department {
         this.description = description;
     }
 
+    public void setClientProjects(Map<Client, List<Project>> clientProjects) {
+        this.clientProjects = clientProjects;
+    }
+
+    public Map<Client, Stream<Project>> getCompletedProjectsAsStream() {
+        return clientProjects.entrySet().stream()
+                .collect(Collectors.toMap(
+                        entry -> entry.getKey(),
+                        entry -> entry.getValue().stream()
+                                .filter(project -> project.getStatus().equals(ProjectStatus.COMPLETED))));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -42,11 +52,20 @@ public class Department {
         Department that = (Department) o;
         return Objects.equals(name, that.name) && Objects.equals(description,
                 that.description) && Objects.equals(clientProjects,
-                that.clientProjects) && Objects.equals(managerProjects, that.managerProjects);
+                that.clientProjects);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description, clientProjects, managerProjects);
+        return Objects.hash(name, description, clientProjects);
+    }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", clientProjects=" + clientProjects +
+                '}';
     }
 }
