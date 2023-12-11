@@ -25,7 +25,7 @@ public class MainThreads {
         //Initialize pool with 5 sizes. Load Connection Pool using threads and Thread Pool(7 threads). 5 threads should be able to get the
         //connection. 2 Threads should wait for the next available connection. The program should wait as well.
         ExecutorService executor = Executors.newFixedThreadPool(7);
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 7; i++) {
             executor.submit(() -> {
                 Connection connection = null;
                 try {
@@ -40,23 +40,6 @@ public class MainThreads {
                 }
             });
         }
-
-        for (int i = 0; i < 2; i++) {
-            executor.submit(() -> {
-                Connection connection = null;
-                try {
-                    connection = ConnectionPool.acquireConnection();
-                    logger.info("Thread waiting for connection: " + connection);
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    logger.error(e.getMessage());
-                    Thread.currentThread().interrupt();
-                } finally {
-                    ConnectionPool.releaseConnection(connection);
-                }
-            });
-        }
-
         executor.shutdown();
         try {
             executor.awaitTermination(60, TimeUnit.SECONDS);

@@ -2,14 +2,16 @@ package solvd.training.student.connectionpool;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Semaphore;
 
-import static solvd.training.student.logger.LoggerUtil.logger;
 
 public class ConnectionPool {
 
     private static volatile BlockingQueue<Connection> pool;
     private static final int poolSize = 5;
+    private static final Semaphore semaphore = new Semaphore(poolSize, true);
+    private static final CountDownLatch latch = new CountDownLatch(2);
 
     public ConnectionPool() {}
 
@@ -28,16 +30,14 @@ public class ConnectionPool {
     }
 
     public static Connection acquireConnection() throws InterruptedException {
-        BlockingQueue<Connection> pool = getPool();
-        Connection connection = pool.take();
-        logger.info("Thread acquired connection: " + connection);
-        return connection;
+        semaphore.acquire();
+        latch.countDown();
+        latch.await();
+        return new Connection();
     }
 
     public static void releaseConnection(Connection connection) {
-        BlockingQueue<Connection> pool = getPool();
-        pool.add(connection);
-        logger.info("Thread released connection: " + connection);
+        semaphore.release();
     }
 
 }
