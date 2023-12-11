@@ -51,7 +51,7 @@ public class MainThreads {
                 throw new RuntimeException(e);
             }
             try {
-                System.out.println("Thread 1 acquired connection: " + connection);
+                logger.info("Thread 1 acquired connection: " + connection);
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -68,7 +68,7 @@ public class MainThreads {
                 throw new RuntimeException(e);
             }
             try {
-                System.out.println("Thread 2 acquired connection: " + connection);
+                logger.info("Thread 2 acquired connection: " + connection);
                 Thread.sleep(1500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -83,7 +83,7 @@ public class MainThreads {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("All threads finished");
+        logger.info("All threads finished");
 
 
         // Implement 4th part but with IFuture and CompletableStage.
