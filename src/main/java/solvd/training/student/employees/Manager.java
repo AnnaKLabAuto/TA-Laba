@@ -1,7 +1,6 @@
 package solvd.training.student.employees;
 
-import org.apache.logging.log4j.Logger;
-import solvd.training.student.logger.LoggerUtil;
+import static solvd.training.student.logger.LoggerUtil.logger;
 import solvd.training.student.company.Department;
 import solvd.training.student.enums.EmploymentStatus;
 import solvd.training.student.enums.JobTitle;
@@ -16,7 +15,6 @@ import java.util.Set;
 public class Manager extends Employee implements Workable, Communicatable, ProjectManageable, ProjectWorkable {
 
     private final Set<OfficeEmployee> projectTeam;
-    Logger logger = LoggerUtil.getLogger();
 
     public Manager(String firstName, String lastName, Department department, JobTitle title, EmploymentStatus status,
                    LeaveType type, int salary) {

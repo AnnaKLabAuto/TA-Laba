@@ -13,12 +13,11 @@ import solvd.training.student.lambdas.HasProjectManager;
 import solvd.training.student.product.Project;
 import solvd.training.student.product.SoftwareProject;
 import solvd.training.student.product.Task;
-import org.apache.logging.log4j.Logger;
-import solvd.training.student.logger.LoggerUtil;
+import static solvd.training.student.logger.LoggerUtil.logger;
 
 public class ProjectService {
 
-    Logger logger = LoggerUtil.getLogger();
+
     private final SoftwareProject project;
 
     public ProjectService(SoftwareProject project) {

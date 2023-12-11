@@ -1,6 +1,6 @@
 package solvd.training.student.services;
 
-import solvd.training.student.logger.LoggerUtil;
+import static solvd.training.student.logger.LoggerUtil.logger;
 import solvd.training.student.employees.Employee;
 import solvd.training.student.employees.EmployeeRepository;
 import solvd.training.student.employees.OfficeEmployee;
@@ -9,11 +9,11 @@ import solvd.training.student.exceptions.EmployeeNotFoundException;
 import solvd.training.student.lambdas.CheckEmployeeStatus;
 import solvd.training.student.lambdas.RaiseFunction;
 import java.util.List;
-import org.apache.logging.log4j.Logger;
+
 
 public class EmployeeService {
 
-    Logger logger = LoggerUtil.getLogger();
+
     private final EmployeeRepository<Employee> employeeRepository;
 
     public EmployeeService(EmployeeRepository<Employee> employeeRepository) {

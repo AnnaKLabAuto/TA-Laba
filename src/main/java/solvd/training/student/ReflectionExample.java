@@ -1,12 +1,10 @@
 package solvd.training.student;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import static solvd.training.student.logger.LoggerUtil.logger;
 import solvd.training.student.company.Department;
 import solvd.training.student.enums.EmploymentStatus;
 import solvd.training.student.enums.JobTitle;
 import solvd.training.student.enums.LeaveType;
-import solvd.training.student.services.EmployeeService;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -15,8 +13,6 @@ import java.lang.reflect.Method;
 
 public class ReflectionExample {
     public static void main(String[] args) {
-
-        Logger logger = LogManager.getLogger(EmployeeService.class);
 
         try {
         Class<?> managerClass = Class.forName("solvd.training.student.employees.Manager");

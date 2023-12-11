@@ -1,7 +1,6 @@
 package solvd.training.student;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import static solvd.training.student.logger.LoggerUtil.logger;
 import solvd.training.student.clients.Client;
 import solvd.training.student.company.Department;
 import solvd.training.student.employees.*;
@@ -29,7 +28,7 @@ public class Main {
 
     public static void main(String[] args) throws DuplicateEmployeeException, EmployeeNotFoundException, ProjectNotFoundException, ClassNotFoundException {
 
-        Logger logger = LogManager.getLogger(EmployeeService.class);
+
 
         Department itDepartment = new Department("IT", "");
         Department accountingDepartment = new Department("Finance", "");

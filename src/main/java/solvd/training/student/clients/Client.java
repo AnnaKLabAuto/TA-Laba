@@ -1,14 +1,11 @@
 package solvd.training.student.clients;
 
-import org.apache.logging.log4j.Logger;
-import solvd.training.student.logger.LoggerUtil;
+import static solvd.training.student.logger.LoggerUtil.logger;
 public final class Client implements Contractualizable {
 
     private String firstName;
     private String lastName;
     private String email;
-
-    Logger logger = LoggerUtil.getLogger();
 
     public Client(String firstName, String lastName, String email) {
         this.firstName = firstName;

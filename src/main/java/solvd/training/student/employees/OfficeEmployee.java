@@ -1,8 +1,6 @@
 package solvd.training.student.employees;
 
-
-import org.apache.logging.log4j.Logger;
-import solvd.training.student.logger.LoggerUtil;
+import static solvd.training.student.logger.LoggerUtil.logger;
 import solvd.training.student.company.Department;
 import solvd.training.student.enums.EmploymentStatus;
 import solvd.training.student.enums.JobTitle;
@@ -10,7 +8,6 @@ import solvd.training.student.enums.LeaveType;
 
 public class OfficeEmployee extends Employee implements Workable, Communicatable {
 
-    Logger logger = LoggerUtil.getLogger();
 
     public OfficeEmployee(String firstName, String lastName, Department department, JobTitle title, EmploymentStatus status,
                           LeaveType type, int salary) {

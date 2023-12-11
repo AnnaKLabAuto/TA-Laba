@@ -10,9 +10,7 @@ import java.util.stream.Stream;
 public class Department {
 
     private final String name;
-
     private String description;
-
     private Map<Client, List<Project>> clientProjects;
 
     public Department(String name, String description) {
