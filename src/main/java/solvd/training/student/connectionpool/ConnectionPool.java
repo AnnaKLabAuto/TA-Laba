@@ -40,13 +40,4 @@ public class ConnectionPool {
         logger.info("Thread released connection: " + connection);
     }
 
-    public static CompletableFuture<Connection> acquireConnectionAsync() {
-        return CompletableFuture.supplyAsync(() -> {
-            try {
-                return acquireConnection();
-            } catch (InterruptedException e) {
-                throw new RuntimeException("Error acquiring connection", e);
-            }
-        });
-    }
 }

@@ -5,15 +5,14 @@ import solvd.training.student.connectionpool.Connection;
 import solvd.training.student.connectionpool.ConnectionPool;
 import solvd.training.student.connectionpool.CustomThread;
 
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.*;
 
 public class MainThreads {
     public static void main(String[] args){
 
-        ExecutorService executor = Executors.newFixedThreadPool(7);
+
 
         CustomThread threadC = new CustomThread();
         threadC.start();
@@ -25,86 +24,68 @@ public class MainThreads {
 
         //Initialize pool with 5 sizes. Load Connection Pool using threads and Thread Pool(7 threads). 5 threads should be able to get the
         //connection. 2 Threads should wait for the next available connection. The program should wait as well.
+        ExecutorService executor = Executors.newFixedThreadPool(7);
         for (int i = 0; i < 5; i++) {
             executor.submit(() -> {
                 Connection connection = null;
                 try {
                     connection = ConnectionPool.acquireConnection();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                try {
+                    logger.info("Thread acquired connection: " + connection);
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    logger.error(e.getMessage());
+                    Thread.currentThread().interrupt();
                 } finally {
                     ConnectionPool.releaseConnection(connection);
                 }
             });
         }
 
-        executor.submit(() -> {
-            Connection connection = null;
-            try {
-                connection = ConnectionPool.acquireConnection();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            try {
-                logger.info("Thread 1 acquired connection: " + connection);
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } finally {
-                ConnectionPool.releaseConnection(connection);
-            }
-        });
-
-        executor.submit(() -> {
-            Connection connection = null;
-            try {
-                connection = ConnectionPool.acquireConnection();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            try {
-                logger.info("Thread 2 acquired connection: " + connection);
-                Thread.sleep(1500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } finally {
-                ConnectionPool.releaseConnection(connection);
-            }
-        });
+        for (int i = 0; i < 2; i++) {
+            executor.submit(() -> {
+                Connection connection = null;
+                try {
+                    connection = ConnectionPool.acquireConnection();
+                    logger.info("Thread waiting for connection: " + connection);
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    logger.error(e.getMessage());
+                    Thread.currentThread().interrupt();
+                } finally {
+                    ConnectionPool.releaseConnection(connection);
+                }
+            });
+        }
 
         executor.shutdown();
         try {
             executor.awaitTermination(60, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
+            Thread.currentThread().interrupt();
         }
         logger.info("All threads finished");
 
 
         // Implement 4th part but with IFuture and CompletableStage.
-        CompletableFuture<Void> future1 = CompletableFuture.runAsync(() -> {
-            try {
-                Connection connection = ConnectionPool.acquireConnectionAsync().get();
-                ConnectionPool.releaseConnection(connection);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+        ConnectionPool.getPool();
+        ExecutorService executorService = Executors.newFixedThreadPool(7);
+        CompletableFuture<Void>[] futures = new CompletableFuture[7];
 
-        CompletableFuture<Void> future2 = CompletableFuture.runAsync(() -> {
-            try {
-                Connection connection = ConnectionPool.acquireConnectionAsync().get();
-                ConnectionPool.releaseConnection(connection);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-        CompletableFuture<Void> combinedFuture = CompletableFuture.allOf(future1, future2);
-        combinedFuture.join();
+        for (int i = 0; i < 7; i++) {
+            futures[i] = CompletableFuture.runAsync(() -> {
+                try {
+                    Connection connection = ConnectionPool.acquireConnection();
+                    connection.executeQuery("SELECT * FROM");
+                    ConnectionPool.releaseConnection(connection);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }, executorService);
+        }
+        CompletableFuture<Void> allOf = CompletableFuture.allOf(futures);
+        allOf.join();
+        executorService.shutdown();
+
     }
 }
