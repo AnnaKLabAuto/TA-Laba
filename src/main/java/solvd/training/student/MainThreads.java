@@ -1,26 +1,20 @@
 package solvd.training.student;
 
 import static solvd.training.student.logger.LoggerUtil.logger;
-import solvd.training.student.connectionpool.Connection;
-import solvd.training.student.connectionpool.ConnectionPool;
-import solvd.training.student.connectionpool.CustomThread;
-
-import java.util.ArrayList;
-import java.util.List;
+import solvd.training.student.utils.Connection;
+import solvd.training.student.utils.ConnectionPool;
+import solvd.training.student.threads.ConnectionThread;
 import java.util.concurrent.*;
 
 public class MainThreads {
     public static void main(String[] args){
 
-
-
-        CustomThread threadC = new CustomThread();
+        ConnectionThread threadC = new ConnectionThread();
         threadC.start();
 
         Runnable task = () -> logger.info("Custom thread2 running...");
         Thread th = new Thread(task);
         th.start();
-
 
         //Initialize pool with 5 sizes. Load Connection Pool using threads and Thread Pool(7 threads). 5 threads should be able to get the
         //connection. 2 Threads should wait for the next available connection. The program should wait as well.

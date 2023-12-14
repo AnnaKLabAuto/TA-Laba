@@ -1,9 +1,8 @@
 package solvd.training.student.employees;
 
-import solvd.training.student.customlinkedlist.CustomLinkedList;
+import solvd.training.student.custom_linked_list.CustomLinkedList;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.NoSuchElementException;
 
