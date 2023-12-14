@@ -1,8 +1,5 @@
 package solvd.training.student.enums;
 
-import org.apache.logging.log4j.Logger;
-import solvd.training.student.logger.LoggerUtil;
-
 public enum LeaveType {
     NO_LEAVE(0),
     SICK_LEAVE(5),

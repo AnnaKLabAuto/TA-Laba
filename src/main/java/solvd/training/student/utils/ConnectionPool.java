@@ -5,7 +5,6 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Semaphore;
 
-
 public class ConnectionPool {
 
     private static volatile BlockingQueue<Connection> pool;

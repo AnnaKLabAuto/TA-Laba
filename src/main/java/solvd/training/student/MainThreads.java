@@ -1,6 +1,6 @@
 package solvd.training.student;
 
-import static solvd.training.student.logger.LoggerUtil.logger;
+import static solvd.training.student.utils.LoggerUtil.logger;
 import solvd.training.student.utils.Connection;
 import solvd.training.student.utils.ConnectionPool;
 import solvd.training.student.threads.ConnectionThread;

@@ -1,6 +1,6 @@
 package solvd.training.student.services;
 
-import static solvd.training.student.logger.LoggerUtil.logger;
+import static solvd.training.student.utils.LoggerUtil.logger;
 import solvd.training.student.employees.Employee;
 import solvd.training.student.employees.EmployeeRepository;
 import solvd.training.student.employees.OfficeEmployee;

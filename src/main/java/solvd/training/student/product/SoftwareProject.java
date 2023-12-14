@@ -1,6 +1,6 @@
 package solvd.training.student.product;
 
-import static solvd.training.student.logger.LoggerUtil.logger;
+import static solvd.training.student.utils.LoggerUtil.logger;
 import solvd.training.student.enums.ProjectStatus;
 
 public class SoftwareProject extends Project{

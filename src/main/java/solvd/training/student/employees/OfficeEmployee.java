@@ -1,6 +1,6 @@
 package solvd.training.student.employees;
 
-import static solvd.training.student.logger.LoggerUtil.logger;
+import static solvd.training.student.utils.LoggerUtil.logger;
 import solvd.training.student.company.Department;
 import solvd.training.student.enums.EmploymentStatus;
 import solvd.training.student.enums.JobTitle;

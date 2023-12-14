@@ -1,6 +1,6 @@
 package solvd.training.student.clients;
 
-import static solvd.training.student.logger.LoggerUtil.logger;
+import static solvd.training.student.utils.LoggerUtil.logger;
 public final class Client implements Contractualizable {
 
     private String firstName;

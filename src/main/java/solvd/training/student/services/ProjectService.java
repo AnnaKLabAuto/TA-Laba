@@ -13,7 +13,7 @@ import solvd.training.student.lambdas.HasProjectManager;
 import solvd.training.student.product.Project;
 import solvd.training.student.product.SoftwareProject;
 import solvd.training.student.product.Task;
-import static solvd.training.student.logger.LoggerUtil.logger;
+import static solvd.training.student.utils.LoggerUtil.logger;
 
 public class ProjectService {
 
