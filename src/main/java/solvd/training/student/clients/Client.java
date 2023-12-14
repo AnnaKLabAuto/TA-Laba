@@ -1,6 +1,6 @@
 package solvd.training.student.clients;
 
-import static solvd.training.student.utils.LoggerUtil.logger;
+import static solvd.training.student.utils.LoggerUtil.log;
 public final class Client implements Contractualizable {
 
     private String firstName;
@@ -38,14 +38,14 @@ public final class Client implements Contractualizable {
     }
 
     @Override
-    public void createContract() {logger.info("Creating a new contract");}
+    public void createContract() {log.info("Creating a new contract");}
 
     @Override
-    public void reviewContract() {logger.info("Reviewing the contract");}
+    public void reviewContract() {log.info("Reviewing the contract");}
 
     @Override
-    public void fulfillContract() {logger.info("Fulfilling the contract");}
+    public void fulfillContract() {log.info("Fulfilling the contract");}
 
     @Override
-    public void terminateContract() {logger.info("Terminating the contract");}
+    public void terminateContract() {log.info("Terminating the contract");}
 }

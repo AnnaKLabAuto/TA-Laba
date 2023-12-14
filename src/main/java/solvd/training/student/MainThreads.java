@@ -1,6 +1,6 @@
 package solvd.training.student;
 
-import static solvd.training.student.utils.LoggerUtil.logger;
+import static solvd.training.student.utils.LoggerUtil.log;
 
 import solvd.training.student.threads.RunnableThread;
 import solvd.training.student.utils.Connection;
@@ -17,33 +17,41 @@ public class MainThreads {
         RunnableThread runnableThread = new RunnableThread();
         runnableThread.run();
 
-        //Initialize pool with 5 sizes. Load Connection Pool using threads and Thread Pool(7 threads). 5 threads should be able to get the
-        //connection. 2 Threads should wait for the next available connection. The program should wait as well.
-        ExecutorService executor = Executors.newFixedThreadPool(7);
-        for (int i = 0; i < 7; i++) {
-            executor.submit(() -> {
-                Connection connection = null;
-                try {
-                    connection = ConnectionPool.acquireConnection();
-                    logger.info("Thread acquired connection: " + connection);
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    logger.error(e.getMessage());
-                    Thread.currentThread().interrupt();
-                } finally {
-                    ConnectionPool.releaseConnection(connection);
-                }
-            });
-        }
-        executor.shutdown();
+        // Initialize pool with 5 sizes. Load Connection Pool using threads and Thread Pool(7 threads).
+        // 5 threads should be able to get the connection.
+        // 2 Threads should wait for the next available connection. The program should wait as well.
         try {
-            executor.awaitTermination(60, TimeUnit.SECONDS);
-        } catch (InterruptedException e) {
-            logger.error(e.getMessage());
-            Thread.currentThread().interrupt();
+            ExecutorService executor = Executors.newFixedThreadPool(7);
+            for (int i = 0; i < 7; i++) {
+                executor.execute(() -> {
+                    Connection connection = null;
+                    try {
+                        try {
+                            connection = ConnectionPool.acquireConnection();
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        log.info("Thread acquired connection: " + connection);
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        log.error(e.getMessage(), e);
+                    } finally {
+                        if (connection != null) {
+                            ConnectionPool.releaseConnection(connection);
+                        }
+                    }
+                });
+            }
+            executor.shutdown();
+            try {
+                executor.awaitTermination(60, TimeUnit.SECONDS);
+            } catch (InterruptedException e) {
+                log.error(e.getMessage(), e);
+                Thread.currentThread().interrupt();
+            }
+        } finally {
+            log.info("All threads finished");
         }
-        logger.info("All threads finished");
-
 
         // Implement 4th part but with IFuture and CompletableStage.
         ConnectionPool.getPool();

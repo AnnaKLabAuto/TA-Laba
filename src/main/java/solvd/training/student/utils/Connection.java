@@ -1,9 +1,9 @@
 package solvd.training.student.utils;
 
-import static solvd.training.student.utils.LoggerUtil.logger;
+import static solvd.training.student.utils.LoggerUtil.log;
 
 public class Connection {
     public void executeQuery (String query) {
-        logger.info("Executing query: " + query);
+        log.info("Executing query: " + query);
     }
 }

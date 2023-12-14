@@ -1,6 +1,6 @@
 package solvd.training.student.product;
 
-import static solvd.training.student.utils.LoggerUtil.logger;
+import static solvd.training.student.utils.LoggerUtil.log;
 import solvd.training.student.enums.ProjectStatus;
 
 public class SoftwareProject extends Project{
@@ -10,6 +10,6 @@ public class SoftwareProject extends Project{
     }
 
     public final void specificProjectDescription() {
-        logger.info("Description for SoftwareProject.");
+        log.info("Description for SoftwareProject.");
     }
 }

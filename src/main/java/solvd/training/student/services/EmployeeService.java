@@ -1,6 +1,6 @@
 package solvd.training.student.services;
 
-import static solvd.training.student.utils.LoggerUtil.logger;
+import static solvd.training.student.utils.LoggerUtil.log;
 import solvd.training.student.employees.Employee;
 import solvd.training.student.employees.EmployeeRepository;
 import solvd.training.student.employees.OfficeEmployee;
@@ -23,13 +23,13 @@ public class EmployeeService {
     public void addEmployees(List<Employee> employees) {
         for (Employee employee : employees) {
             employeeRepository.addEmployee(employee);
-            logger.info("Added employee: " + employee.getFirstName() + " " + employee.getLastName());
+            log.info("Added employee: " + employee.getFirstName() + " " + employee.getLastName());
         }
     }
 
     public void removeEmployee(Employee employee) {
         employeeRepository.removeEmployee(employee);
-        logger.info("Removed employee: " + employee.getFirstName() + " " + employee.getLastName());
+        log.info("Removed employee: " + employee.getFirstName() + " " + employee.getLastName());
     }
 
     public RaiseFunction<Employee> giveRaise = (employee) -> {
@@ -37,7 +37,7 @@ public class EmployeeService {
         double raisePercentage = 0.30;
         int raiseAmount = (int) (currentSalary * raisePercentage);
         employee.setSalary(currentSalary + raiseAmount);
-        logger.info(employee.getFirstName() + " " + employee.getLastName() + " has received a raise");
+        log.info(employee.getFirstName() + " " + employee.getLastName() + " has received a raise");
     };
 
     public CheckEmployeeStatus<Employee> checkIfEmployeeIsOnVacation = (employee) ->

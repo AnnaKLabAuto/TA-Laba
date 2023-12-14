@@ -1,10 +1,10 @@
 package solvd.training.student.threads;
 
-import static solvd.training.student.utils.LoggerUtil.logger;
+import static solvd.training.student.utils.LoggerUtil.log;
 
 public class RunnableThread implements Runnable {
     @Override
     public void run() {
-        logger.info("Runnable thread: " + Thread.currentThread().getName());
+        log.info("Runnable thread: " + Thread.currentThread().getName());
     }
 }

@@ -1,6 +1,6 @@
 package solvd.training.student.employees;
 
-import static solvd.training.student.utils.LoggerUtil.logger;
+import static solvd.training.student.utils.LoggerUtil.log;
 import solvd.training.student.company.Department;
 import solvd.training.student.enums.EmploymentStatus;
 import solvd.training.student.enums.JobTitle;
@@ -24,37 +24,37 @@ public class Manager extends Employee implements Workable, Communicatable, Proje
 
     @Override
     public void startWork() {
-        logger.info("Working");
+        log.info("Working");
     }
 
     @Override
     public void finishWork() {
-        logger.info("Finished working");
+        log.info("Finished working");
     }
 
     @Override
     public void takeBreak() {
-        logger.info("Need a break.");
+        log.info("Need a break.");
     }
 
     @Override
     public void communicateWith(Employee employee) {
-        logger.info("Communicating with " + employee.getFirstName() + " " + employee.getLastName());
+        log.info("Communicating with " + employee.getFirstName() + " " + employee.getLastName());
     }
 
     @Override
     public void planProject() {
-        logger.info("Planning the project.");
+        log.info("Planning the project.");
     }
 
     @Override
     public void scheduleProject() {
-        logger.info("Scheduling the project.");
+        log.info("Scheduling the project.");
     }
 
     @Override
     public void monitorProject() {
-        logger.info("Monitoring the project.");
+        log.info("Monitoring the project.");
     }
 
     public void addEmployeeToTeam(OfficeEmployee employee) {
@@ -63,12 +63,12 @@ public class Manager extends Employee implements Workable, Communicatable, Proje
 
     @Override
     public void meetingAboutProject(Project project) {
-        logger.info("Meeting about " + project.getName());
+        log.info("Meeting about " + project.getName());
     }
 
     @Override
     public void workOnTask() {
-        logger.info("Working on task.");
+        log.info("Working on task.");
     }
 
 }
