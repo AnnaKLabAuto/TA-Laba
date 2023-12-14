@@ -2,9 +2,9 @@ package solvd.training.student.threads;
 
 import static solvd.training.student.utils.LoggerUtil.logger;
 
-public class ConnectionThread extends Thread{
+public class RunnableThread implements Runnable {
     @Override
     public void run() {
-        logger.info("Thread: " + Thread.currentThread().getName());
+        logger.info("Runnable thread: " + Thread.currentThread().getName());
     }
 }
