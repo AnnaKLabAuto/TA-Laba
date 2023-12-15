@@ -15,38 +15,38 @@ public class ReflectionExample {
     public static void main(String[] args) {
 
         try {
-        Class<?> managerClass = Class.forName("solvd.training.student.employees.Manager");
+            Class<?> managerClass = Class.forName("solvd.training.student.employees.Manager");
 
-        for (Field field : managerClass.getDeclaredFields()) {
-            log.info(field.getName());
-        }
-
-        for (Constructor<?> constructor : managerClass.getDeclaredConstructors()) {
-            log.info(constructor.getName());
-            for (Class<?> parameterType : constructor.getParameterTypes()) {
-                log.info("  " + parameterType.getName());
+            for (Field field : managerClass.getDeclaredFields()) {
+                log.info(field.getName());
             }
-        }
 
-        for (Method method : managerClass.getDeclaredMethods()) {
-            log.info(method.getName());
-            log.info("  " + method.getReturnType().getName());
-            for (Class<?> parameterType : method.getParameterTypes()) {
-                log.info("  " + parameterType.getName());
+            for (Constructor<?> constructor : managerClass.getDeclaredConstructors()) {
+                log.info(constructor.getName());
+                for (Class<?> parameterType : constructor.getParameterTypes()) {
+                    log.info("  " + parameterType.getName());
+                }
             }
-        }
 
-        Department itDepartment = new Department("IT", "Example of description");
+            for (Method method : managerClass.getDeclaredMethods()) {
+                log.info(method.getName());
+                log.info("  " + method.getReturnType().getName());
+                for (Class<?> parameterType : method.getParameterTypes()) {
+                    log.info("  " + parameterType.getName());
+                }
+            }
 
-        Constructor<?> constructor = managerClass.getConstructor(String.class, String.class, Department.class,
-                JobTitle.class, EmploymentStatus.class, LeaveType.class, int.class);
+            Department itDepartment = new Department("IT", "Example of description");
 
-        Object managerObject = constructor.newInstance("John", "Smith", itDepartment, JobTitle.MANAGER,
-                EmploymentStatus.FULL_TIME, LeaveType.NO_LEAVE, 10000);
+            Constructor<?> constructor = managerClass.getConstructor(String.class, String.class, Department.class,
+                    JobTitle.class, EmploymentStatus.class, LeaveType.class, int.class);
 
-        Method getNameMethod = managerClass.getMethod("getFirstName");
-        String name = (String) getNameMethod.invoke(managerObject);
-        log.info("Manager's name: " + name);
+            Object managerObject = constructor.newInstance("John", "Smith", itDepartment, JobTitle.MANAGER,
+                    EmploymentStatus.FULL_TIME, LeaveType.NO_LEAVE, 10000);
+
+            Method getNameMethod = managerClass.getMethod("getFirstName");
+            String name = (String) getNameMethod.invoke(managerObject);
+            log.info("Manager's name: " + name);
         } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             log.error("An error occurred while reflecting on the Manager class:", e);
         } catch (InstantiationException e) {
