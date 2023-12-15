@@ -1,12 +1,12 @@
-package solvd.training.student.logger;
+package solvd.training.student.utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class LoggerUtil {
 
-    private static final Logger logger = LogManager.getLogger(LoggerUtil.class.getName());
+    public static final Logger log = LogManager.getLogger(LoggerUtil.class.getName());
 
     public static Logger getLogger() {
-        return logger;
+        return log;
     }
 }

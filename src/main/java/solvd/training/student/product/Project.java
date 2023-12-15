@@ -1,12 +1,9 @@
 package solvd.training.student.product;
 
-import solvd.training.student.company.Department;
 import solvd.training.student.employees.Employee;
-import solvd.training.student.employees.OfficeEmployee;
 import solvd.training.student.enums.ProjectStatus;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 

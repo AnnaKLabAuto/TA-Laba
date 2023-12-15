@@ -1,6 +1,5 @@
 package solvd.training.student.services;
 
-
 import solvd.training.student.employees.Employee;
 import solvd.training.student.employees.Manager;
 import solvd.training.student.employees.OfficeEmployee;
@@ -13,12 +12,9 @@ import solvd.training.student.lambdas.HasProjectManager;
 import solvd.training.student.product.Project;
 import solvd.training.student.product.SoftwareProject;
 import solvd.training.student.product.Task;
-import org.apache.logging.log4j.Logger;
-import solvd.training.student.logger.LoggerUtil;
-
+import static solvd.training.student.utils.LoggerUtil.log;
 public class ProjectService {
 
-    Logger logger = LoggerUtil.getLogger();
     private final SoftwareProject project;
 
     public ProjectService(SoftwareProject project) {
@@ -28,9 +24,9 @@ public class ProjectService {
     public void addTaskToProject(Task task) {
         if (task != null) {
             project.addTask(task);
-            logger.info("Added task: " + task.getName() + " to project " + project.getName());
+            log.info("Added task: " + task.getName() + " to project " + project.getName());
         }
-        logger.error("Task is null");
+        log.error("Task is null");
     }
 
     public <T extends Employee> void addEmployeeToProject(T employee) throws DuplicateEmployeeException {
@@ -50,12 +46,12 @@ public class ProjectService {
             }
             if (task.getAssignedEmployee() == null) {
                 task.assignToEmployee(employee);
-                logger.info("Added task: " + task.getName() + " to employee " + employee.getFirstName() + " "
+                log.info("Added task: " + task.getName() + " to employee " + employee.getFirstName() + " "
                         + employee.getLastName());
             } throw new DuplicateTaskException("Task is already assigned to " + task.getAssignedEmployee().getFirstName()
                     + " " + task.getAssignedEmployee().getLastName());
         } catch (TaskAssignmentException | DuplicateTaskException e) {
-            logger.error(e);
+            log.error(e);
         }
     }
 

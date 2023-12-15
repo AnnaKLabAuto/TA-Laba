@@ -1,7 +1,6 @@
 package solvd.training.student;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import static solvd.training.student.utils.LoggerUtil.log;
 import solvd.training.student.clients.Client;
 import solvd.training.student.company.Department;
 import solvd.training.student.employees.*;
@@ -28,8 +27,6 @@ import java.util.stream.Stream;
 public class Main {
 
     public static void main(String[] args) throws DuplicateEmployeeException, EmployeeNotFoundException, ProjectNotFoundException, ClassNotFoundException {
-
-        Logger logger = LogManager.getLogger(EmployeeService.class);
 
         Department itDepartment = new Department("IT", "");
         Department accountingDepartment = new Department("Finance", "");
@@ -112,7 +109,7 @@ public class Main {
 
         employeeService.addEmployees(employees);
         Employee foundEmployee = employeeService.displayEmployeeInfo(employee1);
-        logger.info(foundEmployee);
+        log.info(foundEmployee);
 
         ProjectService projectService = new ProjectService(projectTicketApp);
         projectService.addEmployeeToProject(employee1);
@@ -122,7 +119,7 @@ public class Main {
         projectService.addTaskToProject(task2);
         projectService.assignTaskToEmployee(employee1, task1);
         Project foundProject = projectService.displayProjectInfo(projectTicketApp);
-        logger.info(foundProject);
+        log.info(foundProject);
 
         Map<Client, List<Project>> clientProjects = new HashMap<>();
         List<Project> clientListOfProjects = new ArrayList<>();
@@ -136,25 +133,25 @@ public class Main {
         employeeService.giveRaise.giveRaise(employee1);
 
         boolean isEmployeeOnVacation = employeeService.checkIfEmployeeIsOnVacation.checkIfEmployeeIsOnVacation(employee1);
-        logger.info(isEmployeeOnVacation ? "Employee is on vacation" : "Employee is not on vacation");
+        log.info(isEmployeeOnVacation ? "Employee is on vacation" : "Employee is not on vacation");
 
         boolean isManagerPresentInProject = projectService.hasManager.hasManager(projectTicketApp, manager);
-        logger.info(isManagerPresentInProject ? "Project has a manager" : "Project does not have a manager");
+        log.info(isManagerPresentInProject ? "Project has a manager" : "Project does not have a manager");
 
         Supplier<SoftwareProject> addSoftwareProject = () -> new SoftwareProject(
                 "FoodApp",
                 "App for searching food recipes",
                 ProjectStatus.IN_PLANNING);
         SoftwareProject newProject = addSoftwareProject.get();
-        logger.info("New project created");
+        log.info("New project created");
 
         Predicate<SoftwareProject> checkIsProjectInProgress = project -> projectTicketApp
                 .getStatus()
                 .equals(ProjectStatus.IN_PROGRESS);
         boolean isInProgress = checkIsProjectInProgress.test(projectWeatherApp);
-        logger.info("Is project in progress: " + isInProgress);
+        log.info("Is project in progress: " + isInProgress);
 
-        Consumer<Employee> displayEmployeeSalary = employee ->  logger.info("The Salary of "
+        Consumer<Employee> displayEmployeeSalary = employee ->  log.info("The Salary of "
                 + employee.getFirstName() + " "
                 + employee.getLastName() + "is "
                 + employee.getSalary());
@@ -162,12 +159,12 @@ public class Main {
 
         Function<Task, Employee> getAssignedEmployee = Task::getAssignedEmployee;
         Employee assignedEmployee = getAssignedEmployee.apply(task1);
-        logger.info("Assigned employee: " + assignedEmployee.getFirstName() + " " + assignedEmployee.getLastName());
+        log.info("Assigned employee: " + assignedEmployee.getFirstName() + " " + assignedEmployee.getLastName());
 
         Consumer<SoftwareProject> getTasksAndPrint = project -> {
             List<Task> tasks = project.getTasks();
             for (Task task : tasks) {
-                logger.info(task);
+                log.info(task);
             }
         };
         getTasksAndPrint.accept(projectTicketApp);
@@ -180,40 +177,40 @@ public class Main {
                 .mapToDouble(Employee::getSalary)
                 .average()
                 .getAsDouble();
-        logger.info(averageSalary);
+        log.info(averageSalary);
 
         List<String> employeeFullNames = employees.stream()
                 .map(employee -> employee.getFirstName() + " " + employee.getLastName())
                 .toList();
-        logger.info(employeeFullNames);
+        log.info(employeeFullNames);
 
         Map<Client, Stream<Project>> completedProjectsStreams = itDepartment.getCompletedProjectsAsStream();
         for (Map.Entry<Client, Stream<Project>> entry : completedProjectsStreams.entrySet()) {
             Client foundClient = entry.getKey();
             Stream<Project> completedProjects = entry.getValue();
 
-            logger.info("Completed projects for client " + foundClient.getFirstName() + " " + foundClient.getLastName());
-            completedProjects.forEach(project -> logger.info(project.getName()));
+            log.info("Completed projects for client " + foundClient.getFirstName() + " " + foundClient.getLastName());
+            completedProjects.forEach(project -> log.info(project.getName()));
         }
 
         List<Employee> filteredEmployees = allEmployees.stream()
                 .filter(employee -> employee.getSalary() < 6000)
                 .toList();
-        logger.info(employeeFullNames);
+        log.info(filteredEmployees);
 
         boolean hasHighPriorityTask = allTasks.stream()
                 .anyMatch(task -> task.getTaskPriority() == TaskPriority.HIGH);
-        logger.info(hasHighPriorityTask);
+        log.info(hasHighPriorityTask);
 
         Employee firstSickEmployee = allEmployees.stream()
                 .filter(employee -> employee.getType() != LeaveType.SICK_LEAVE)
                 .findFirst()
                 .orElse(null);
-        logger.info(firstSickEmployee);
+        log.info(firstSickEmployee);
 
         List<Task> assignedTasks = allTasks.stream()
                 .filter(task -> task.getAssignedEmployee() != null)
                 .toList();
-        logger.info(assignedTasks);
+        log.info(assignedTasks);
     }
 }
